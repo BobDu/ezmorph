@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+
+	<properties>
+		<title>EZMorph::Getting Started</title>
+	</properties>
+
+	<body>
+		<section name="Topics">
+			<a href="#morph">Morphing Objects</a>
+			<br />
+			<a href="#assertions">Asserting array equality</a>
+			<br />
+
+			<a name="morph" />
+			<subsection name="Morphing Objects">
+				<p>
+					Morphing Objects is as easy as calling <code>morph()</code>
+					on a <code>Morpher</code> or <code>ObjectMorpher</code>
+					. You may have noticed that <code>Morpher</code>
+					does not have a <code>morph()</code> method but
+					<code>ObjectMorpher</code> does, that is because
+					<code>Morpher</code> is used on primitive Morphers too.
+				</p>
+				<p>
+					Example:
+					<source>
+   int i = new IntMorpher().morph( "123" );
+   assertEquals( 123, i ); // true!
+							  
+   String str = new StringMorpher().morph( new Integer(123) );
+   assertEquals( "123", str ); // true! 
+
+   Boolean[] bools = new ObjectArrayMorpher(
+                           new BooleanObjectMorpher() ).morph(
+                                new String[]{ "true", "false" } );
+   assertEquals( Boolean.TRUE, bools[0] ); // true!
+   assertEquals( Boolean.FALSE, bools[1] ); // true!</source>
+				</p>
+				<p>
+					EZMorph comes with a handy class for working with
+					Morphers named <code>MorpherRegistry</code>. 
+					It works much like <code>ConvertUtils</code>
+					on commons-beanutils. This class is not a singleton
+					like <code>ConvertUtils</code>,
+					so it is possible to have multiple registries with
+					different Morphers that support the same target
+					class, but take different default values or support
+					different source classes. 
+               Another convenient class is <code>MorphUtils</code>, 
+               you can register standard Morphers to any
+					<code>MorpherRegistry</code> with it.
+				</p>
+				<p>
+				Example:
+				<source>
+   MorpherRegistry morperRegistry = new MorpherRegistry();
+   MorphUtils.registerStandardMorphers( morpherRegistry );
+   Integer i = (Integer) morpherRegistry.morph( Integer.class, "A" );
+   // "A" is not a number, so morph() returns a Integer(0)
+   assertEquals( new Integer(0), i );</source>
+				</p>
+			</subsection>
+
+			<a name="assertions" />
+			<subsection name="Asserting array equality">
+			<p>Asserting array equality is very easy with
+			<code>ArrayAssertions</code>, just call <code>assertEquals</code>
+			on it, and will try to see first if the arrays reffer to the same
+			location in memory, if not, it will compare them by value, iterating 
+			through each dimension the arrays may have.
+			</p>
+			<p>
+			Here are the meat and bones of every <code>assertEquals</code>:
+			<source>
+   public static void assertEquals( String message, boolean[] expecteds, boolean[] actuals )
+   {
+      if( expecteds == actuals ){
+         return;
+      }
+      String header = message == null ? "" : message + ": ";
+      if( expecteds == null ){
+         fail( header + "expected array was null" );
+      }
+      if( actuals == null ){
+         fail( header + "actual array was null" );
+      }
+      if( actuals.length != expecteds.length ){
+         fail( header + "array lengths differed, expected.length=" + expecteds.length
+               + " actual.length=" + actuals.length );
+      }
+
+      for( int i = 0; i &lt; expecteds.length; i++ ){
+         assertEquals( header + "arrays first differed at element [" + i + "];", expecteds[i],
+               actuals[i] );
+      }
+   }</source>
+		<code>assertEquals( Object[], Object[] )</code> is different, as it will inspect
+		the arrays for primitive contents and call the appropriate method.
+			</p>
+			</subsection>
+		</section>
+	</body>
+
+</document>

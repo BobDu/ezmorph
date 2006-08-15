@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document>
+	<properties>
+		<title>EZMorph</title>
+		<author email="aalmiray@users.sourceforge.net">
+			Andres Almiray
+		</author>
+	</properties>
+	<body>
+		<release version="0.8" date="2006-08-14"
+			desc="First public release">
+			<action dev="Andres Almiray" type="add">
+				First release.
+			</action>
+		</release>
+	</body>
+</document>

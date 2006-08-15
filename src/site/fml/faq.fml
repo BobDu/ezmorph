@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faqs title="Frequently Asked Questions">
+
+	<part id="general">
+		<title>General</title>
+
+		<!--
+			<faq id="">
+			<question>
+			<strong></strong>
+			</question>
+			<answer><p>
+			</p></answer>
+			</faq>
+		-->
+
+		<faq id="another">
+			<question>
+				<strong>
+					Why another project for Object conversion ?
+				</strong>
+			</question>
+			<answer>
+				<p>
+					When working on Json-lib's ability to transform a
+					JSON String back into a java bean, I needed support
+					for multidimensional arrays. Of all the projects
+					mentioned on the front page, none of the provided
+					that feature.
+				</p>
+			</answer>
+		</faq>
+
+		<faq id="noreally">
+			<question>
+				<strong>
+               No really, why ?     
+				</strong>
+			</question>
+			<answer>
+				<p>
+               Inspecting each ot the projects mentioned on the front
+               page gives the following:
+               <ul>
+                  <li>Commons-Convert will focus on Object->String->Object
+                     conversions, there is no mention of arrays and it is 
+                     not even released.</li>
+                  <li>Commons-Lang's ArrayUtils only supports array conversions
+                     from primitive types to wrappers and back, and only
+                     one dimensional arrays.</li>
+                  <li>Commons-Beanutils's ConvertUtils only supports conversions
+                     of String->Object and one dimensional arrays.</li>
+                  <li>Lorentz does not seem to support multidimensional arrays.</li>
+                  <li>Morph ditto.</li>
+                  <li>Spring's PropertyEditors work very similar to ConvertUtils,
+                     from String->Object and Object->String.</li>
+               </ul><br/>
+               Besides Lorentz and Morph have a broader scope, EZMorph just want to
+               transform data in a very straightforward manner (i.e, no transitional
+               conversions under the covers).
+				</p>
+			</answer>
+		</faq>
+
+		<faq id="ownimpl">
+			<question>
+				<strong>How do I create my own Morpher ?</strong>
+			</question>
+			<answer>
+				<p>
+					You'll probably want to create an ObjectMorpher and
+					perhaps provide a default value when an excepcional
+					cause occurs, if so you may extend
+					<code>AbstractObjectMorpher</code>
+					, if not then implement
+					<code>ObjectMorpher</code>
+					right away. Be careful when implementing your
+					Morpher and follow the contracts of
+					<code>morpsTo()</code>
+					and
+					<code>supports( Class )</code>
+					. If done improperly, the MorpherRegistry and the
+					ArrayMorphers would probaly handle your Morpher
+					incorrectly.
+				</p>
+			</answer>
+		</faq>
+
+		<faq id="logo">
+			<question>
+				<strong>Why the cheesy logo ?</strong>
+			</question>
+			<answer>
+				<p>
+					My GIMP-fu is very rusty. I'm open to suggestions.
+					=-)
+				</p>
+			</answer>
+		</faq>
+
+	</part>
+</faqs>
