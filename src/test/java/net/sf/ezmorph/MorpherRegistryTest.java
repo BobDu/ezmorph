@@ -136,7 +136,7 @@ public class MorpherRegistryTest extends TestCase
       assertNull( morpherRegistry.morph( Long.class, "" ) );
       assertNull( morpherRegistry.morph( Float.class, "" ) );
       assertNull( morpherRegistry.morph( Double.class, "" ) );
-      assertNull( morpherRegistry.morph( String.class, "" ) );
+      assertEquals( "", morpherRegistry.morph( String.class, "" ) );
    }
 
    public void testMorph_objects__null()
@@ -162,7 +162,7 @@ public class MorpherRegistryTest extends TestCase
       assertNull( morpherRegistry.morph( Long.class, "null" ) );
       assertNull( morpherRegistry.morph( Float.class, "null" ) );
       assertNull( morpherRegistry.morph( Double.class, "null" ) );
-      assertNull( morpherRegistry.morph( String.class, "null" ) );
+      assertEquals( "null", morpherRegistry.morph( String.class, "null" ) );
    }
 
    public void testMorph_primitives()

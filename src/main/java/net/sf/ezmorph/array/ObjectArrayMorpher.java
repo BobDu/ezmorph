@@ -18,7 +18,6 @@ package net.sf.ezmorph.array;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 import net.sf.ezmorph.MorphException;
 import net.sf.ezmorph.Morpher;

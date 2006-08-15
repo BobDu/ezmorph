@@ -7,6 +7,12 @@
 		</author>
 	</properties>
 	<body>
+           <release version="N/A" date="2006-08-15"
+			desc="Current working version">
+			<action dev="Andres Almiray" type="fix" issue="1540833">
+  	         StringMorpher always returns defaultValue first
+			</action>
+		</release>
 		<release version="0.8" date="2006-08-14"
 			desc="First public release">
 			<action dev="Andres Almiray" type="add">

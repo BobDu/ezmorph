@@ -16,105 +16,49 @@
 
 package net.sf.ezmorph.object;
 
-import java.util.Arrays;
-
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import net.sf.ezmorph.MorphException;
+import net.sf.ezmorph.ObjectMorpher;
 
 /**
  * Morphs to a String.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class StringMorpher extends AbstractObjectMorpher
+public class StringMorpher implements ObjectMorpher
 {
-   private String defaultValue;
+   private static final StringMorpher INSTANCE = new StringMorpher();
+
+   public static StringMorpher getInstance()
+   {
+      return INSTANCE;
+   }
 
    public StringMorpher()
    {
-      super( false );
-   }
-
-   public StringMorpher( String defaultValue )
-   {
-      super( true );
-      this.defaultValue = defaultValue;
    }
 
    public boolean equals( Object obj )
    {
-      if( this == obj ){
-         return true;
-      }
-      if( obj == null ){
-         return false;
-      }
-
-      if( !(obj instanceof StringMorpher) ){
-         return false;
-      }
-
-      StringMorpher other = (StringMorpher) obj;
-      EqualsBuilder builder = new EqualsBuilder();
-      if( isUseDefault() && other.isUseDefault() ){
-         builder.append( getDefaultValue(), other.getDefaultValue() );
-         return builder.isEquals();
-      }else if( !isUseDefault() && !other.isUseDefault() ){
-         return builder.isEquals();
-      }else{
-         return false;
-      }
-   }
-
-   public String getDefaultValue()
-   {
-      return defaultValue;
+      return INSTANCE == obj;
    }
 
    public int hashCode()
    {
-      HashCodeBuilder builder = new HashCodeBuilder();
-      if( isUseDefault() ){
-         builder.append( getDefaultValue() );
-      }
-      return builder.toHashCode();
+      return 42 + getClass().hashCode();
    }
 
    public Object morph( Object value )
    {
-      if( isUseDefault() ){
-         return getDefaultValue();
-      }
-
       if( value == null ){
          return null;
       }
 
-      if( String.class.isAssignableFrom( value.getClass() ) ){
-         return (String) value;
+      if( !supports( value.getClass() ) ){
+         throw new MorphException( "Class not supported. " + value.getClass() );
       }
 
-      Class sourceClass = value.getClass();
-      if( sourceClass.isArray() ){
-         if( boolean[].class.isAssignableFrom( sourceClass ) ){
-            return Arrays.toString( (boolean[]) value );
-         }else if( char[].class.isAssignableFrom( sourceClass ) ){
-            return Arrays.toString( (char[]) value );
-         }else if( byte[].class.isAssignableFrom( sourceClass ) ){
-            return Arrays.toString( (byte[]) value );
-         }else if( short[].class.isAssignableFrom( sourceClass ) ){
-            return Arrays.toString( (short[]) value );
-         }else if( int[].class.isAssignableFrom( sourceClass ) ){
-            return Arrays.toString( (int[]) value );
-         }else if( long[].class.isAssignableFrom( sourceClass ) ){
-            return Arrays.toString( (long[]) value );
-         }else if( float[].class.isAssignableFrom( sourceClass ) ){
-            return Arrays.toString( (float[]) value );
-         }else if( double[].class.isAssignableFrom( sourceClass ) ){
-            return Arrays.toString( (double[]) value );
-         }else{
-            return Arrays.toString( (Object[]) value );
-         }
+      if( String.class.isAssignableFrom( value.getClass() ) ){
+         return (String) value;
       }
 
       return String.valueOf( value );
@@ -127,6 +71,6 @@ public class StringMorpher extends AbstractObjectMorpher
 
    public boolean supports( Class clazz )
    {
-      return true;
+      return !clazz.isArray();
    }
 }

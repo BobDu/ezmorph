@@ -17,15 +17,15 @@
 package net.sf.ezmorph.object;
 
 import junit.framework.Test;
+import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-import net.sf.ezmorph.Morpher;
-import net.sf.ezmorph.test.ArrayAssertions;
+import net.sf.ezmorph.MorphException;
 
 /**
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class StringMorpherTest extends AbstractObjectMorpherTestCase
+public class StringMorpherTest extends TestCase
 {
    public static void main( String[] args )
    {
@@ -39,10 +39,7 @@ public class StringMorpherTest extends AbstractObjectMorpherTestCase
       return suite;
    }
 
-   private StringMorpher anotherMorpher;
-   private StringMorpher anotherMorpherWithDefaultValue;
-   private StringMorpher morpher;
-   private StringMorpher morpherWithDefaultValue;
+   private StringMorpher morpher = StringMorpher.getInstance();
 
    public StringMorpherTest( String name )
    {
@@ -50,6 +47,18 @@ public class StringMorpherTest extends AbstractObjectMorpherTestCase
    }
 
    // -----------------------------------------------------------------------
+
+   public void testMorph_array()
+   {
+      try{
+         morpher.morph( new boolean[] { true, false } );
+         fail( "Expected a MorphException" );
+      }
+      catch( MorphException expected ){
+         // ok
+      }
+
+   }
 
    public void testMorph_boolean()
    {
@@ -68,69 +77,5 @@ public class StringMorpherTest extends AbstractObjectMorpherTestCase
    public void testMorph_null()
    {
       assertNull( morpher.morph( null ) );
-   }
-
-   public void testMorph_useDefault()
-   {
-      String expected = "";
-      morpher = new StringMorpher( "" );
-      String actual = (String) morpher.morph( null );
-      assertEquals( expected, actual );
-   }
-
-   public void testMorph_useDefault2()
-   {
-      String expected = "";
-      morpher = new StringMorpher( expected );
-      String actual = (String) morpher.morph( null );
-      assertEquals( expected, actual );
-   }
-
-   public void testMorph_array()
-   {
-      ArrayAssertions.assertEquals( "[true, false]", morpher.morph( new boolean[] { true, false } ) );
-      ArrayAssertions.assertEquals( "[A, B]", morpher.morph( new char[] { 'A', 'B' } ) );
-      ArrayAssertions.assertEquals( "[one, two]", morpher.morph( new String[] { "one", "two" } ) );
-   }
-
-   public void testMorph_array_numbers()
-   {
-      String expected = "[1, 2]";
-      ArrayAssertions.assertEquals( expected, morpher.morph( new byte[] { 1, 2 } ) );
-      ArrayAssertions.assertEquals( expected, morpher.morph( new short[] { 1, 2 } ) );
-      ArrayAssertions.assertEquals( expected, morpher.morph( new int[] { 1, 2 } ) );
-      ArrayAssertions.assertEquals( expected, morpher.morph( new long[] { 1, 2 } ) );
-
-      expected = "[1.0, 2.0]";
-      ArrayAssertions.assertEquals( expected, morpher.morph( new float[] { 1, 2 } ) );
-      ArrayAssertions.assertEquals( expected, morpher.morph( new double[] { 1, 2 } ) );
-   }
-
-   protected Morpher getAnotherMorpher()
-   {
-      return anotherMorpher;
-   }
-
-   protected Morpher getAnotherMorpherWithDefaultValue()
-   {
-      return anotherMorpherWithDefaultValue;
-   }
-
-   protected Morpher getMorpher()
-   {
-      return morpher;
-   }
-
-   protected Morpher getMorpherWithDefaultValue()
-   {
-      return morpherWithDefaultValue;
-   }
-
-   protected void setUp() throws Exception
-   {
-      morpher = new StringMorpher();
-      morpherWithDefaultValue = new StringMorpher( "" );
-      anotherMorpher = new StringMorpher();
-      anotherMorpherWithDefaultValue = new StringMorpher( "..." );
    }
 }
