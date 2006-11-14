@@ -16,6 +16,9 @@
 
 package net.sf.ezmorph.object;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 import net.sf.ezmorph.MorphException;
 import net.sf.ezmorph.primitive.ByteMorpher;
 import net.sf.ezmorph.primitive.DoubleMorpher;
@@ -125,7 +128,6 @@ public class NumberMorpher extends AbstractObjectMorpher
 
       String str = String.valueOf( value )
             .trim();
-      Object result = null;
 
       if( !type.isPrimitive() ){
          // if empty string and class != primitive treat it like null
@@ -137,8 +139,10 @@ public class NumberMorpher extends AbstractObjectMorpher
       if( isDecimalNumber( type ) ){
          if( Float.class.isAssignableFrom( type ) || Float.TYPE == type ){
             return morphToFloat( str );
-         }else{
+         }else if( Double.class.isAssignableFrom( type ) || Double.TYPE == type ){
             return morphToDouble( str );
+         }else{
+            return morphToBigDecimal( str );
          }
       }else{
          if( Byte.class.isAssignableFrom( type ) || Byte.TYPE == type ){
@@ -149,10 +153,10 @@ public class NumberMorpher extends AbstractObjectMorpher
             return morphToInteger( str );
          }else if( Long.class.isAssignableFrom( type ) || Long.TYPE == type ){
             return morphToLong( str );
+         }else{
+            return morphToBigInteger( str );
          }
       }
-
-      return result;
    }
 
    public Class morphsTo()
@@ -162,6 +166,9 @@ public class NumberMorpher extends AbstractObjectMorpher
 
    public void setDefaultValue( Number defaultValue )
    {
+      if( defaultValue != null && !type.isInstance( defaultValue ) ){
+         throw new MorphException( "Default value must be of type " + type );
+      }
       this.defaultValue = defaultValue;
    }
 
@@ -173,7 +180,29 @@ public class NumberMorpher extends AbstractObjectMorpher
    private boolean isDecimalNumber( Class type )
    {
       return (Double.class.isAssignableFrom( type ) || Float.class.isAssignableFrom( type )
-            || Double.TYPE == type || Float.TYPE == type);
+            || Double.TYPE == type || Float.TYPE == type || BigDecimal.class.isAssignableFrom( type ));
+   }
+
+   private Object morphToBigDecimal( String str )
+   {
+      Object result = null;
+      if( isUseDefault() ){
+         result = new BigDecimalMorpher( (BigDecimal) defaultValue ).morph( str );
+      }else{
+         result = new BigDecimal( str );
+      }
+      return result;
+   }
+
+   private Object morphToBigInteger( String str )
+   {
+      Object result = null;
+      if( isUseDefault() ){
+         result = new BigIntegerMorpher( (BigInteger) defaultValue ).morph( str );
+      }else{
+         result = new BigInteger( str );
+      }
+      return result;
    }
 
    private Object morphToByte( String str )

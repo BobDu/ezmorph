@@ -47,6 +47,8 @@ public class ObjectTestSuite extends TestCase
       suite.addTest( CharacterObjectMorpherTest.suite() );
       suite.addTest( DateMorpherTest.suite() );
       suite.addTest( IdentityObjectMorpherTest.suite() );
+      suite.addTest( BigDecimalMorpherTest.suite() );
+      suite.addTest( BigIntegerMorpherTest.suite() );
       suite.addTest( NumberMorpherTest.suite() );
       suite.addTest( StringMorpherTest.suite() );
 

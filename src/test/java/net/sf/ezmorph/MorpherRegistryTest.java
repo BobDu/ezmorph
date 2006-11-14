@@ -1,5 +1,8 @@
 package net.sf.ezmorph;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -38,7 +41,7 @@ public class MorpherRegistryTest extends TestCase
 
       ArrayAssertions.assertEquals( new Boolean[] { Boolean.FALSE },
             (Boolean[]) morpherRegistry.morph( Boolean[].class, new String[] { "" } ) );
-      ArrayAssertions.assertEquals( new Character[] { new Character( '0' ) },
+      ArrayAssertions.assertEquals( new Character[] { new Character( '\0' ) },
             (Character[]) morpherRegistry.morph( Character[].class, new String[] { "" } ) );
    }
 
@@ -58,6 +61,10 @@ public class MorpherRegistryTest extends TestCase
             Float[].class, new String[] { "" } ) );
       ArrayAssertions.assertEquals( new Double[] { null }, (Double[]) morpherRegistry.morph(
             Double[].class, new String[] { "" } ) );
+      ArrayAssertions.assertEquals( new BigInteger[] { null }, (BigInteger[]) morpherRegistry.morph(
+            BigInteger[].class, new String[] { "" } ) );
+      ArrayAssertions.assertEquals( new BigDecimal[] { null }, (BigDecimal[]) morpherRegistry.morph(
+            BigDecimal[].class, new String[] { "" } ) );
    }
 
    public void testMorph_array_of_objects__null_string()
@@ -76,6 +83,10 @@ public class MorpherRegistryTest extends TestCase
             Float[].class, new String[] { "null" } ) );
       ArrayAssertions.assertEquals( new Double[] { null }, (Double[]) morpherRegistry.morph(
             Double[].class, new String[] { "null" } ) );
+      ArrayAssertions.assertEquals( new BigInteger[] { null }, (BigInteger[]) morpherRegistry.morph(
+            BigInteger[].class, new String[] { "null" } ) );
+      ArrayAssertions.assertEquals( new BigDecimal[] { null }, (BigDecimal[]) morpherRegistry.morph(
+            BigDecimal[].class, new String[] { "null" } ) );
    }
 
    public void testMorph_array_of_objects__numbers()
@@ -94,6 +105,10 @@ public class MorpherRegistryTest extends TestCase
             (Float[]) morpherRegistry.morph( Float[].class, new String[] { "a" } ) );
       ArrayAssertions.assertEquals( new Double[] { new Double( 0 ) },
             (Double[]) morpherRegistry.morph( Double[].class, new String[] { "a" } ) );
+      ArrayAssertions.assertEquals( new BigInteger[] { BigInteger.ZERO }, (BigInteger[]) morpherRegistry.morph(
+            BigInteger[].class, new String[] { "a" } ) );
+      ArrayAssertions.assertEquals( new BigDecimal[] { BigDecimal.ZERO }, (BigDecimal[]) morpherRegistry.morph(
+            BigDecimal[].class, new String[] { "a" } ) );
    }
 
    public void testMorph_array_of_primitives()
@@ -102,7 +117,7 @@ public class MorpherRegistryTest extends TestCase
 
       ArrayAssertions.assertEquals( new boolean[] { false }, (boolean[]) morpherRegistry.morph(
             boolean[].class, new String[] { "" } ) );
-      ArrayAssertions.assertEquals( new char[] { '0' }, (char[]) morpherRegistry.morph(
+      ArrayAssertions.assertEquals( new char[] { '\0' }, (char[]) morpherRegistry.morph(
             char[].class, new String[] { "" } ) );
       ArrayAssertions.assertEquals( new byte[] { 0 }, (byte[]) morpherRegistry.morph( byte[].class,
             new String[] { "" } ) );
@@ -123,7 +138,7 @@ public class MorpherRegistryTest extends TestCase
       MorphUtils.registerStandardObjectMorphers( morpherRegistry );
 
       assertEquals( Boolean.FALSE, morpherRegistry.morph( Boolean.class, null ) );
-      assertEquals( new Character( '0' ), morpherRegistry.morph( Character.class, null ) );
+      assertEquals( new Character( '\0' ), morpherRegistry.morph( Character.class, null ) );
    }
 
    public void testMorph_objects__empty_string()
@@ -136,6 +151,8 @@ public class MorpherRegistryTest extends TestCase
       assertNull( morpherRegistry.morph( Long.class, "" ) );
       assertNull( morpherRegistry.morph( Float.class, "" ) );
       assertNull( morpherRegistry.morph( Double.class, "" ) );
+      assertNull( morpherRegistry.morph( BigInteger.class, "" ) );
+      assertNull( morpherRegistry.morph( BigDecimal.class, "" ) );
       assertEquals( "", morpherRegistry.morph( String.class, "" ) );
    }
 
@@ -149,6 +166,8 @@ public class MorpherRegistryTest extends TestCase
       assertEquals( (Long) null, morpherRegistry.morph( Long.class, null ) );
       assertEquals( (Float) null, morpherRegistry.morph( Float.class, null ) );
       assertEquals( (Double) null, morpherRegistry.morph( Double.class, null ) );
+      assertEquals( (BigInteger) null, morpherRegistry.morph( BigInteger.class, null ) );
+      assertEquals( (BigDecimal) null, morpherRegistry.morph( BigDecimal.class, null ) );
       assertEquals( (String) null, morpherRegistry.morph( String.class, null ) );
    }
 
@@ -162,6 +181,8 @@ public class MorpherRegistryTest extends TestCase
       assertNull( morpherRegistry.morph( Long.class, "null" ) );
       assertNull( morpherRegistry.morph( Float.class, "null" ) );
       assertNull( morpherRegistry.morph( Double.class, "null" ) );
+      assertNull( morpherRegistry.morph( BigInteger.class, "null" ) );
+      assertNull( morpherRegistry.morph( BigDecimal.class, "null" ) );
       assertEquals( "null", morpherRegistry.morph( String.class, "null" ) );
    }
 
@@ -170,7 +191,7 @@ public class MorpherRegistryTest extends TestCase
       MorphUtils.registerStandardPrimitiveMorphers( morpherRegistry );
 
       assertEquals( Boolean.FALSE, morpherRegistry.morph( boolean.class, null ) );
-      assertEquals( new Character( '0' ), morpherRegistry.morph( char.class, null ) );
+      assertEquals( new Character( '\0' ), morpherRegistry.morph( char.class, null ) );
       assertEquals( new Byte( (byte) 0 ), morpherRegistry.morph( byte.class, null ) );
       assertEquals( new Short( (short) 0 ), morpherRegistry.morph( short.class, null ) );
       assertEquals( new Integer( 0 ), morpherRegistry.morph( int.class, null ) );

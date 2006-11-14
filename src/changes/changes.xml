@@ -7,8 +7,23 @@
 		</author>
 	</properties>
 	<body>
-           <release version="N/A" date="2006-08-15"
-			desc="Current working version">
+		<release version="0.9" date="2006-11-14"
+			desc="Third public release">
+			<action dev="Andres Almiray" type="add">
+		Added BigDecimalMorpher and BigIntegerMorpher.	
+			</action>
+			<action dev="Andres Almiray" type="update">
+		Updated NumberMorpher with BigDecimal and BigInteger support.
+			</action>
+			<action dev="Andres Almiray" type="update">
+		Updated MorphUtils with BigDecimal and BigInteger support.
+			</action>
+			<action dev="Andres Almiray" type="update">
+		MorphUtils now registers char/Character '\0' as default instead of '0'.
+			</action>
+		</release>
+           <release version="0.8.1" date="2006-08-15"
+			desc="Second public release">
 			<action dev="Andres Almiray" type="fix" issue="1540833">
   	         StringMorpher always returns defaultValue first
 			</action>

@@ -16,6 +16,9 @@
 
 package net.sf.ezmorph.object;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
@@ -50,6 +53,66 @@ public class NumberMorpherTest extends AbstractObjectMorpherTestCase
    }
 
    // -----------------------------------------------------------------------
+
+   public void testBigDecimalConversion_Double()
+   {
+      morpher = new NumberMorpher( BigDecimal.class );
+      BigDecimal expected = new BigDecimal( Double.MIN_VALUE );
+      BigDecimal actual = (BigDecimal) morpher.morph( expected );
+      assertEquals( expected, actual );
+   }
+
+   public void testBigDecimalConversion_null()
+   {
+      morpher = new NumberMorpher( BigDecimal.class );
+      assertNull( morpher.morph( null ) );
+   }
+
+   public void testBigDecimalConversion_useDefault()
+   {
+      morpher = new NumberMorpher( BigDecimal.class );
+      BigDecimal expected = BigDecimal.ONE;
+      morpher.setDefaultValue( expected );
+      morpher.setUseDefault( true );
+      BigDecimal actual = (BigDecimal) morpher.morph( new Object() );
+      assertEquals( expected, actual );
+   }
+
+   public void testBigDecimalConversion_useDefault_null()
+   {
+      morpher = new NumberMorpher( BigDecimal.class, (BigDecimal) null );
+      assertNull( morpher.morph( null ) );
+   }
+
+   public void testBigIntegerConversion_Long()
+   {
+      morpher = new NumberMorpher( BigInteger.class );
+      BigInteger expected = BigInteger.valueOf( Long.MIN_VALUE );
+      BigInteger actual = (BigInteger) morpher.morph( expected );
+      assertEquals( expected, actual );
+   }
+
+   public void testBigIntegerConversion_null()
+   {
+      morpher = new NumberMorpher( BigInteger.class );
+      assertNull( morpher.morph( null ) );
+   }
+
+   public void testBigIntegerConversion_useDefault()
+   {
+      morpher = new NumberMorpher( BigInteger.class );
+      BigInteger expected = BigInteger.ONE;
+      morpher.setDefaultValue( expected );
+      morpher.setUseDefault( true );
+      BigInteger actual = (BigInteger) morpher.morph( new Object() );
+      assertEquals( expected, actual );
+   }
+
+   public void testBigIntegerConversion_useDefault_null()
+   {
+      morpher = new NumberMorpher( BigInteger.class, (BigInteger) null );
+      assertNull( morpher.morph( null ) );
+   }
 
    public void testByteConversion_byte()
    {
