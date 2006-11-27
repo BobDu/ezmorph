@@ -1,12 +1,12 @@
 package net.sf.ezmorph.object;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 import net.sf.ezmorph.MorphException;
+import net.sf.ezmorph.MorphUtils;
 import net.sf.ezmorph.Morpher;
 
 public class BigIntegerMorpherTest extends AbstractObjectMorpherTestCase
@@ -38,7 +38,7 @@ public class BigIntegerMorpherTest extends AbstractObjectMorpherTestCase
 
    public void testBigIntegerMorph_BigDecimal()
    {
-      Object actual = ((BigIntegerMorpher) getMorpherWithDefaultValue()).morph( BigDecimal.ZERO );
+      Object actual = ((BigIntegerMorpher) getMorpherWithDefaultValue()).morph( MorphUtils.BIGDECIMAL_ZERO );
       assertEquals( BigInteger.ZERO, actual );
    }
 

@@ -48,6 +48,9 @@ import net.sf.ezmorph.primitive.ShortMorpher;
  */
 public class MorphUtils
 {
+   public static final BigDecimal BIGDECIMAL_ONE = new BigDecimal( "1" );
+   public static final BigDecimal BIGDECIMAL_ZERO = new BigDecimal( "0" );
+
    /**
     * Clears and registers all standard morpehrs.
     * 
@@ -76,7 +79,7 @@ public class MorphUtils
     * <li>Double - new Double( 0 )</li>
     * <li>String - null</li>
     * <li>BigInteger - BigInteger.ZERO</li>
-    * <li>BigDecimal - BigDecimal.ZERO</li>
+    * <li>BigDecimal - MorphUtils.BIGDECIMAL_ZERO</li>
     * </ul>
     * 
     * @param morpherRegistry
@@ -103,7 +106,7 @@ public class MorphUtils
       morpherRegistry.registerMorpher( new ObjectArrayMorpher( new NumberMorpher( BigInteger.class,
             BigInteger.ZERO ) ) );
       morpherRegistry.registerMorpher( new ObjectArrayMorpher( new NumberMorpher( BigDecimal.class,
-            BigDecimal.ZERO ) ) );
+            MorphUtils.BIGDECIMAL_ZERO ) ) );
    }
 
    /**
@@ -119,7 +122,7 @@ public class MorphUtils
     * <li>Double - new Double( 0 )</li>
     * <li>String - null</li>
     * <li>BigInteger - BigInteger.ZERO</li>
-    * <li>BigDecimal - BigDecimal.ZERO</li>
+    * <li>BigDecimal - MorphUtils.BIGDECIMAL_ZERO</li>
     * </ul>
     * 
     * @param morpherRegistry
@@ -136,7 +139,7 @@ public class MorphUtils
       morpherRegistry.registerMorpher( new NumberMorpher( Float.class, new Float( 0 ) ) );
       morpherRegistry.registerMorpher( new NumberMorpher( Double.class, new Double( 0 ) ) );
       morpherRegistry.registerMorpher( new NumberMorpher( BigInteger.class, BigInteger.ZERO ) );
-      morpherRegistry.registerMorpher( new NumberMorpher( BigDecimal.class, BigDecimal.ZERO ) );
+      morpherRegistry.registerMorpher( new NumberMorpher( BigDecimal.class, MorphUtils.BIGDECIMAL_ZERO ) );
    }
 
    /**

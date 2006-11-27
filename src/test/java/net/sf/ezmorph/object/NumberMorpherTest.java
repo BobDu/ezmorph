@@ -23,6 +23,7 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 import net.sf.ezmorph.MorphException;
+import net.sf.ezmorph.MorphUtils;
 import net.sf.ezmorph.Morpher;
 
 /**
@@ -71,7 +72,7 @@ public class NumberMorpherTest extends AbstractObjectMorpherTestCase
    public void testBigDecimalConversion_useDefault()
    {
       morpher = new NumberMorpher( BigDecimal.class );
-      BigDecimal expected = BigDecimal.ONE;
+      BigDecimal expected = MorphUtils.BIGDECIMAL_ONE;
       morpher.setDefaultValue( expected );
       morpher.setUseDefault( true );
       BigDecimal actual = (BigDecimal) morpher.morph( new Object() );

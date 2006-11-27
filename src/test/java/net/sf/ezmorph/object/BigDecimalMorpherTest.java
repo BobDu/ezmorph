@@ -7,6 +7,7 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 import net.sf.ezmorph.MorphException;
+import net.sf.ezmorph.MorphUtils;
 import net.sf.ezmorph.Morpher;
 
 public class BigDecimalMorpherTest extends AbstractObjectMorpherTestCase
@@ -38,14 +39,14 @@ public class BigDecimalMorpherTest extends AbstractObjectMorpherTestCase
 
    public void testBigDecimalMorph_BigDecimal()
    {
-      Object actual = ((BigDecimalMorpher) getMorpherWithDefaultValue()).morph( BigDecimal.ZERO );
-      assertEquals( BigDecimal.ZERO, actual );
+      Object actual = ((BigDecimalMorpher) getMorpherWithDefaultValue()).morph( MorphUtils.BIGDECIMAL_ZERO );
+      assertEquals( MorphUtils.BIGDECIMAL_ZERO, actual );
    }
    
    public void testBigDecimalMorph_BigInteger()
    {
       Object actual = ((BigDecimalMorpher) getMorpherWithDefaultValue()).morph( BigInteger.ZERO );
-      assertEquals( BigDecimal.ZERO, actual );
+      assertEquals( MorphUtils.BIGDECIMAL_ZERO, actual );
    }
 
    public void testBigDecimalMorph_Number()
@@ -134,13 +135,13 @@ public class BigDecimalMorpherTest extends AbstractObjectMorpherTestCase
    {
       String expected = String.valueOf( "A" );
       Object actual = ((BigDecimalMorpher) getMorpherWithDefaultValue()).morph( expected );
-      assertEquals( BigDecimal.ZERO, actual );
+      assertEquals( MorphUtils.BIGDECIMAL_ZERO, actual );
    }
 
    public void testBigDecimalMorph_useDefault_null()
    {
       Object actual = ((BigDecimalMorpher) getMorpherWithDefaultValue()).morph( null );
-      assertEquals( BigDecimal.ZERO, actual );
+      assertEquals( MorphUtils.BIGDECIMAL_ZERO, actual );
    }
 
    protected Morpher getAnotherMorpher()
@@ -166,8 +167,8 @@ public class BigDecimalMorpherTest extends AbstractObjectMorpherTestCase
    protected void setUp() throws Exception
    {
       morpher = new BigDecimalMorpher();
-      morpherWithDefaultValue = new BigDecimalMorpher( BigDecimal.ZERO );
+      morpherWithDefaultValue = new BigDecimalMorpher( MorphUtils.BIGDECIMAL_ZERO );
       anotherMorpher = new BigDecimalMorpher();
-      anotherMorpherWithDefaultValue = new BigDecimalMorpher( BigDecimal.ONE );
+      anotherMorpherWithDefaultValue = new BigDecimalMorpher( MorphUtils.BIGDECIMAL_ONE );
    }
 }

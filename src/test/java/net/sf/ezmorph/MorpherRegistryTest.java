@@ -107,7 +107,7 @@ public class MorpherRegistryTest extends TestCase
             (Double[]) morpherRegistry.morph( Double[].class, new String[] { "a" } ) );
       ArrayAssertions.assertEquals( new BigInteger[] { BigInteger.ZERO }, (BigInteger[]) morpherRegistry.morph(
             BigInteger[].class, new String[] { "a" } ) );
-      ArrayAssertions.assertEquals( new BigDecimal[] { BigDecimal.ZERO }, (BigDecimal[]) morpherRegistry.morph(
+      ArrayAssertions.assertEquals( new BigDecimal[] { MorphUtils.BIGDECIMAL_ZERO }, (BigDecimal[]) morpherRegistry.morph(
             BigDecimal[].class, new String[] { "a" } ) );
    }
 
