@@ -16,14 +16,16 @@
 
 package net.sf.ezmorph;
 
+import org.apache.commons.lang.exception.NestableRuntimeException;
+
 /**
  * A <strong>MorphException</strong> indicates that a call to
  * <code>Morpher.morph()</code> has failed to complete successfully.<br>
  * Based on common-beauntils ConversionException.<br>
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class MorphException extends RuntimeException
+public class MorphException extends NestableRuntimeException
 {
    private static final long serialVersionUID = -540093801787033824L;
 
@@ -37,7 +39,7 @@ public class MorphException extends RuntimeException
 
    /**
     * Construct a new exception with the specified message.
-    * 
+    *
     * @param message The message describing this exception
     */
    public MorphException( String message )
@@ -47,7 +49,7 @@ public class MorphException extends RuntimeException
 
    /**
     * Construct a new exception with the specified message and root cause.
-    * 
+    *
     * @param message The message describing this exception
     * @param cause The root cause of this exception
     */
@@ -61,7 +63,7 @@ public class MorphException extends RuntimeException
 
    /**
     * Construct a new exception with the specified root cause.
-    * 
+    *
     * @param cause The root cause of this exception
     */
    public MorphException( Throwable cause )
