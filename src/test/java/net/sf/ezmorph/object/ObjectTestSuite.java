@@ -23,7 +23,7 @@ import junit.textui.TestRunner;
 
 /**
  * Test suite for the EZMorph Object package.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
 public class ObjectTestSuite extends TestCase
@@ -51,6 +51,7 @@ public class ObjectTestSuite extends TestCase
       suite.addTest( BigIntegerMorpherTest.suite() );
       suite.addTest( NumberMorpherTest.suite() );
       suite.addTest( StringMorpherTest.suite() );
+      suite.addTest( ClassMorpherTest.suite() );
 
       return suite;
    }
