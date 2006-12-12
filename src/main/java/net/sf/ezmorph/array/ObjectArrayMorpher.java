@@ -88,6 +88,9 @@ public class ObjectArrayMorpher extends AbstractArrayMorpher
                   Object morphed = morphMethod.invoke( morpher, new Object[] { value } );
                   Array.set( result, index, morphed );
                }
+               catch( MorphException me ){
+                  throw me;
+               }
                catch( Exception e ){
                   throw new MorphException( e );
                }
@@ -134,7 +137,7 @@ public class ObjectArrayMorpher extends AbstractArrayMorpher
                .getDeclaredMethod( "morph", new Class[] { Object.class } );
       }
       catch( NoSuchMethodException nsme ){
-         throw new IllegalArgumentException( nsme );
+         throw new IllegalArgumentException( nsme.getMessage() );
       }
    }
 }

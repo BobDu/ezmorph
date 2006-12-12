@@ -214,7 +214,7 @@ public class ObjectArrayMorpherTest extends TestCase
 
    protected void setUp() throws Exception
    {
-      morpher = new ObjectArrayMorpher( new StringMorpher() );
+      morpher = new ObjectArrayMorpher( StringMorpher.getInstance() );
       anotherMorpher = new ObjectArrayMorpher( IdentityObjectMorpher.getInstance() );
    }
 }

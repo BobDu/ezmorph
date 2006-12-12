@@ -39,6 +39,24 @@ public class MorpherRegistryTest extends TestCase
    {
       MorphUtils.registerStandardObjectArrayMorphers( morpherRegistry );
 
+      ArrayAssertions.assertEquals( new Byte[] { Byte.valueOf( "0" ), Byte.valueOf( "1" ) },
+            (Byte[]) morpherRegistry.morph( Byte[].class, new String[] { "0", "1" } ) );
+      ArrayAssertions.assertEquals( new Short[] { Short.valueOf( "0" ), Short.valueOf( "1" ) },
+            (Short[]) morpherRegistry.morph( Short[].class, new String[] { "0", "1" } ) );
+      ArrayAssertions.assertEquals(
+            new Integer[] { Integer.valueOf( "0" ), Integer.valueOf( "1" ) },
+            (Integer[]) morpherRegistry.morph( Integer[].class, new String[] { "0", "1" } ) );
+      ArrayAssertions.assertEquals( new Long[] { Long.valueOf( "0" ), Long.valueOf( "1" ) },
+            (Long[]) morpherRegistry.morph( Long[].class, new String[] { "0", "1" } ) );
+      ArrayAssertions.assertEquals( new Float[] { Float.valueOf( "0" ), Float.valueOf( "1" ) },
+            (Float[]) morpherRegistry.morph( Float[].class, new String[] { "0", "1" } ) );
+      ArrayAssertions.assertEquals( new Double[] { Double.valueOf( "0" ), Double.valueOf( "1" ) },
+            (Double[]) morpherRegistry.morph( Double[].class, new String[] { "0", "1" } ) );
+      ArrayAssertions.assertEquals( new BigInteger[] { BigInteger.ZERO, BigInteger.ONE },
+            (BigInteger[]) morpherRegistry.morph( BigInteger[].class, new String[] { "0", "1" } ) );
+      ArrayAssertions.assertEquals( new BigDecimal[] { MorphUtils.BIGDECIMAL_ZERO,
+            MorphUtils.BIGDECIMAL_ONE }, (BigDecimal[]) morpherRegistry.morph( BigDecimal[].class,
+            new String[] { "0", "1" } ) );
       ArrayAssertions.assertEquals( new Boolean[] { Boolean.FALSE },
             (Boolean[]) morpherRegistry.morph( Boolean[].class, new String[] { "" } ) );
       ArrayAssertions.assertEquals( new Character[] { new Character( '\0' ) },

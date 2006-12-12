@@ -57,7 +57,35 @@ public class ClassMorpherTest extends TestCase
       catch( MorphException expected ){
          // ok
       }
+   }
 
+   public void testMorph_unknownClassname()
+   {
+      try{
+         morpher.morph( "bogusClass.I.do.not.exist" );
+         fail( "Expected a MorphException" );
+      }
+      catch( MorphException expected ){
+         // ok
+      }
+   }
+
+   public void testEquals()
+   {
+      assertTrue( ClassMorpher.getInstance()
+            .equals( ClassMorpher.getInstance() ) );
+      assertFalse( ClassMorpher.getInstance()
+            .equals( StringMorpher.getInstance() ) );
+   }
+
+   public void testHashCode()
+   {
+      assertEquals( ClassMorpher.getInstance()
+            .hashCode(), ClassMorpher.getInstance()
+            .hashCode() );
+      assertTrue( ClassMorpher.getInstance()
+            .hashCode() != StringMorpher.getInstance()
+            .hashCode() );
    }
 
    public void testMorph()

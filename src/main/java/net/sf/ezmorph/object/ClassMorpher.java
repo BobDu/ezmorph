@@ -33,7 +33,7 @@ public class ClassMorpher implements ObjectMorpher
       return INSTANCE;
    }
 
-   public ClassMorpher()
+   private ClassMorpher()
    {
    }
 

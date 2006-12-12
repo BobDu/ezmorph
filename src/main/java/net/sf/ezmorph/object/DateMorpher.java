@@ -32,7 +32,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  * This morpher will iterate through the supplied formats until one succeeds or
  * the default value is returned (if default value is condigured).
  * </p>
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
 public class DateMorpher extends AbstractObjectMorpher
@@ -161,11 +161,11 @@ public class DateMorpher extends AbstractObjectMorpher
             return dateParser.parse( strValue.toLowerCase() );
          }
          catch( ParseException pe ){
-            // ignore this exception, we will try the next format
+            // ignore exception, try the next format
          }
       }
 
-      // we were unable to parse the date
+      // unable to parse the date
       if( isUseDefault() ){
          return defaultValue;
       }else{

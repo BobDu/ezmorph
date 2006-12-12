@@ -21,14 +21,14 @@ import junit.framework.Assert;
 /**
  * Provides assertions on arrays (primitive and objects).<br>
  * All methods support multiple dimensional arrays.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
 public class ArrayAssertions extends Assert
 {
    /**
     * Asserts that two boolean[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -40,7 +40,7 @@ public class ArrayAssertions extends Assert
    /**
     * Asserts that a boolean[] is equal to and Object[] (presumably an
     * Boolean[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -51,7 +51,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two byte[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -62,7 +62,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that a byte[] is equal to and Object[] (presumably an Byte[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -73,7 +73,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two char[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -84,7 +84,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that a char[] is equal to and Object[] (presumably an Character[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -95,7 +95,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two double[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -106,7 +106,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that a double[] is equal to and Object[] (presumably an Double[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -117,7 +117,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two float[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -128,7 +128,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that a float[] is equal to and Object[] (presumably an Float[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -139,7 +139,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two int[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -150,7 +150,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that a int[] is equal to and Object[] (presumably an Integer[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -161,7 +161,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two long[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -172,7 +172,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that a long[] is equal to and Object[] (presumably an Long[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -183,7 +183,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that Object[] (presumably an Boolean[]) is equal to a boolean[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -194,7 +194,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that Object[] (presumably an Byte[]) is equal to a byte[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -205,7 +205,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that Object[] (presumably an Character[]) is equal to a char[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -216,7 +216,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that Object[] (presumably an Double[]) is equal to a double[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -227,7 +227,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that Object[] (presumably an Float[]) is equal to a float[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -238,7 +238,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that Object[] (presumably an Integer[]) is equal to a int[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -249,7 +249,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that Object[] (presumably an Long[]) is equal to a long[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -260,7 +260,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two Object[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -271,7 +271,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that Object[] (presumably an Short[]) is equal to a short[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -282,7 +282,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that a short[] is equal to and Object[] (presumably an Short[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -293,7 +293,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two short[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -304,7 +304,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two boolean[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -334,7 +334,7 @@ public class ArrayAssertions extends Assert
    /**
     * Asserts that a boolean[] is equal to and Object[] (presumably an
     * Boolean[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -354,13 +354,13 @@ public class ArrayAssertions extends Assert
 
       for( int i = 0; i < expecteds.length; i++ ){
          assertEquals( header + "arrays first differed at element [" + i + "];",
-               Boolean.valueOf( expecteds[i] ), actuals[i] );
+               new Boolean( expecteds[i] ), actuals[i] );
       }
    }
 
    /**
     * Asserts that two byte[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -389,7 +389,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that a byte[] is equal to and Object[] (presumably an Byte[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -415,7 +415,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two char[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -444,7 +444,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that a char[] is equal to and Object[] (presumably an Character[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -470,7 +470,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two double[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -499,7 +499,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that a double[] is equal to and Object[] (presumably an Double[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -525,7 +525,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two float[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -554,7 +554,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that a float[] is equal to and Object[] (presumably an Float[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -580,7 +580,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two int[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -609,7 +609,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that a int[] is equal to and Object[] (presumably an Integer[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -635,7 +635,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two long[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -664,7 +664,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that a long[] is equal to and Object[] (presumably an Long[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -690,7 +690,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that Object[] (presumably an Boolean[]) is equal to a boolean[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -710,13 +710,13 @@ public class ArrayAssertions extends Assert
 
       for( int i = 0; i < expecteds.length; i++ ){
          assertEquals( header + "arrays first differed at element [" + i + "];", expecteds[i],
-               Boolean.valueOf( actuals[i] ) );
+               new Boolean( actuals[i] ) );
       }
    }
 
    /**
     * Asserts that Object[] (presumably an Byte[]) is equal to a byte[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -742,7 +742,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that Object[] (presumably an Character[]) is equal to a char[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -768,7 +768,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that Object[] (presumably an Double[]) is equal to a double[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -794,7 +794,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that Object[] (presumably an Float[]) is equal to a float[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -820,7 +820,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that Object[] (presumably an Integer[]) is equal to a int[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -846,7 +846,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that Object[] (presumably an Long[]) is equal to a long[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -872,7 +872,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two Object[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -1022,7 +1022,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that Object[] (presumably an Short[]) is equal to a short[].
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -1048,7 +1048,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that a short[] is equal to and Object[] (presumably an Short[])
-    * 
+    *
     * @param expecteds
     * @param actuals
     */
@@ -1074,7 +1074,7 @@ public class ArrayAssertions extends Assert
 
    /**
     * Asserts that two short[] are equal.<br>
-    * 
+    *
     * @param expecteds
     * @param actuals
     */

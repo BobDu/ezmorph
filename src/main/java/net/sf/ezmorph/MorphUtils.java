@@ -91,7 +91,7 @@ public class MorphUtils
             Boolean.FALSE ) ) );
       morpherRegistry.registerMorpher( new ObjectArrayMorpher( new CharacterObjectMorpher(
             new Character( '\0' ) ) ) );
-      morpherRegistry.registerMorpher( new ObjectArrayMorpher( new StringMorpher() ) );
+      morpherRegistry.registerMorpher( new ObjectArrayMorpher( StringMorpher.getInstance() ) );
       morpherRegistry.registerMorpher( new ObjectArrayMorpher( new NumberMorpher( Byte.class,
             new Byte( (byte) 0 ) ) ) );
       morpherRegistry.registerMorpher( new ObjectArrayMorpher( new NumberMorpher( Short.class,
@@ -108,7 +108,7 @@ public class MorphUtils
             BigInteger.ZERO ) ) );
       morpherRegistry.registerMorpher( new ObjectArrayMorpher( new NumberMorpher( BigDecimal.class,
             MorphUtils.BIGDECIMAL_ZERO ) ) );
-      morpherRegistry.registerMorpher( new ObjectArrayMorpher( new ClassMorpher() ) );
+      morpherRegistry.registerMorpher( new ObjectArrayMorpher( ClassMorpher.getInstance() ) );
    }
 
    /**
@@ -133,7 +133,7 @@ public class MorphUtils
    {
       morpherRegistry.registerMorpher( new BooleanObjectMorpher( Boolean.FALSE ) );
       morpherRegistry.registerMorpher( new CharacterObjectMorpher( new Character( '\0' ) ) );
-      morpherRegistry.registerMorpher( new StringMorpher() );
+      morpherRegistry.registerMorpher( StringMorpher.getInstance() );
       morpherRegistry.registerMorpher( new NumberMorpher( Byte.class, new Byte( (byte) 0 ) ) );
       morpherRegistry.registerMorpher( new NumberMorpher( Short.class, new Short( (short) 0 ) ) );
       morpherRegistry.registerMorpher( new NumberMorpher( Integer.class, new Integer( 0 ) ) );
@@ -143,7 +143,7 @@ public class MorphUtils
       morpherRegistry.registerMorpher( new NumberMorpher( BigInteger.class, BigInteger.ZERO ) );
       morpherRegistry.registerMorpher( new NumberMorpher( BigDecimal.class,
             MorphUtils.BIGDECIMAL_ZERO ) );
-      morpherRegistry.registerMorpher( new ClassMorpher() );
+      morpherRegistry.registerMorpher( ClassMorpher.getInstance() );
    }
 
    /**
