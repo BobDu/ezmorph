@@ -24,7 +24,7 @@
 				</p>
 				<p>
 					Example:
-					<source>
+					<textarea cols="80" rows="11" name="srccode" class="java:nogutter:nocontrols">
    int i = new IntMorpher().morph( "123" );
    assertEquals( 123, i ); // true!
 							  
@@ -35,7 +35,7 @@
                            new BooleanObjectMorpher() ).morph(
                                 new String[]{ "true", "false" } );
    assertEquals( Boolean.TRUE, bools[0] ); // true!
-   assertEquals( Boolean.FALSE, bools[1] ); // true!</source>
+   assertEquals( Boolean.FALSE, bools[1] ); // true!</textarea>
 				</p>
 				<p>
 					EZMorph comes with a handy class for working with
@@ -53,12 +53,12 @@
 				</p>
 				<p>
 				Example:
-				<source>
+				<textarea cols="80" rows="5" name="srccode" class="java:nogutter:nocontrols">
    MorpherRegistry morperRegistry = new MorpherRegistry();
    MorphUtils.registerStandardMorphers( morpherRegistry );
    Integer i = (Integer) morpherRegistry.morph( Integer.class, "A" );
    // "A" is not a number, so morph() returns a Integer(0)
-   assertEquals( new Integer(0), i );</source>
+   assertEquals( new Integer(0), i );</textarea>
 				</p>
 			</subsection>
 
@@ -72,7 +72,7 @@
 			</p>
 			<p>
 			Here are the meat and bones of every <code>assertEquals</code>:
-			<source>
+			<textarea cols="80" rows="22" name="srccode" class="java:nogutter:nocontrols">
    public static void assertEquals( String message, boolean[] expecteds, boolean[] actuals )
    {
       if( expecteds == actuals ){
@@ -94,7 +94,7 @@
          assertEquals( header + "arrays first differed at element [" + i + "];", expecteds[i],
                actuals[i] );
       }
-   }</source>
+   }</textarea>
 		<code>assertEquals( Object[], Object[] )</code> is different, as it will inspect
 		the arrays for primitive contents and call the appropriate method.
 			</p>
