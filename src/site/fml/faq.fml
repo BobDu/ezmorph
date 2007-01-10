@@ -62,10 +62,15 @@
                      ConvertUtils, from String->Object and
                      Object->String.
                   </li>
+                  <li>
+                     Dozer supports type conversion but it seems to do
+                     it only in the context of a bean and its
+                     properties, not just on a single property.
+                  </li>
                </ul>
                <br />
                Besides Lorentz and Morph have a broader scope, EZMorph
-               just want to transform data in a very straightforward
+               is used to transform data in a very straightforward
                manner (i.e, no transitional conversions under the
                covers).
             </p>
