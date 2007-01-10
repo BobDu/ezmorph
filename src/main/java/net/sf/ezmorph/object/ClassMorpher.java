@@ -57,12 +57,16 @@ public class ClassMorpher implements ObjectMorpher
          throw new MorphException( "Class not supported. " + value.getClass() );
       }
 
+      if( value instanceof Class ){
+         return (Class) value;
+      }
+
       if( "null".equals( value )){
          return null;
       }
 
       try{
-         return Class.forName( (String)value );
+         return Class.forName( value.toString() );
       }
       catch( Exception e ){
          throw new MorphException( e );
@@ -76,6 +80,6 @@ public class ClassMorpher implements ObjectMorpher
 
    public boolean supports( Class clazz )
    {
-      return String.class.isAssignableFrom( clazz );
+      return true;
    }
 }

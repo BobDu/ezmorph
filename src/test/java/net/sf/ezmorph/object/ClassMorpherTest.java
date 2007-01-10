@@ -48,28 +48,6 @@ public class ClassMorpherTest extends TestCase
 
    // -----------------------------------------------------------------------
 
-   public void testMorph_array()
-   {
-      try{
-         morpher.morph( new boolean[] { true, false } );
-         fail( "Expected a MorphException" );
-      }
-      catch( MorphException expected ){
-         // ok
-      }
-   }
-
-   public void testMorph_unknownClassname()
-   {
-      try{
-         morpher.morph( "bogusClass.I.do.not.exist" );
-         fail( "Expected a MorphException" );
-      }
-      catch( MorphException expected ){
-         // ok
-      }
-   }
-
    public void testEquals()
    {
       assertTrue( ClassMorpher.getInstance()
@@ -95,6 +73,17 @@ public class ClassMorpherTest extends TestCase
       assertEquals( expected, actual );
    }
 
+   public void testMorph_array()
+   {
+      try{
+         morpher.morph( new boolean[] { true, false } );
+         fail( "Expected a MorphException" );
+      }
+      catch( MorphException expected ){
+         // ok
+      }
+   }
+
    public void testMorph_arrayClass()
    {
       Class expected = int[].class;
@@ -102,8 +91,39 @@ public class ClassMorpherTest extends TestCase
       assertEquals( expected, actual );
    }
 
+   public void testMorph_class()
+   {
+      Class expected = Object.class;
+      Class actual = (Class) morpher.morph( Object.class );
+      assertEquals( expected, actual );
+   }
+
    public void testMorph_null()
    {
       assertNull( morpher.morph( null ) );
+   }
+
+   public void testMorph_unknownClassname()
+   {
+      try{
+         morpher.morph( "bogusClass.I.do.not.exist" );
+         fail( "Expected a MorphException" );
+      }
+      catch( MorphException expected ){
+         // ok
+      }
+   }
+
+   public void testMorph_withtoString()
+   {
+      Class expected = MyClass.class;
+      Class actual = (Class) morpher.morph( new MyClass() );
+      assertEquals( expected, actual );
+   }
+
+   public static class MyClass{
+      public String toString(){
+         return MyClass.class.getName();
+      }
    }
 }
