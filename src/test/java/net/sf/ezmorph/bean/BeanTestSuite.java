@@ -14,24 +14,19 @@
  * limitations under the License.
  */
 
-package net.sf.ezmorph;
+package net.sf.ezmorph.bean;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-import net.sf.ezmorph.array.ArrayTestSuite;
-import net.sf.ezmorph.bean.BeanTestSuite;
-import net.sf.ezmorph.object.ObjectTestSuite;
-import net.sf.ezmorph.primitive.PrimitiveTestSuite;
-import net.sf.ezmorph.test.TestTestSuite;
 
 /**
- * Test suite for [ezmorph].
+ * Test suite for the EZMorph Object package.
  *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class AllEZMorphTestSuite extends TestCase
+public class BeanTestSuite extends TestCase
 {
    /**
     * Command-line interface.
@@ -47,20 +42,18 @@ public class AllEZMorphTestSuite extends TestCase
    public static Test suite()
    {
       TestSuite suite = new TestSuite();
-      suite.setName( "EZMorph (all) Tests" );
-      suite.addTest( MorphTestSuite.suite() );
-      suite.addTest( ArrayTestSuite.suite() );
-      suite.addTest( ObjectTestSuite.suite() );
-      suite.addTest( BeanTestSuite.suite() );
-      suite.addTest( PrimitiveTestSuite.suite() );
-      suite.addTest( TestTestSuite.suite() );
+      suite.setName( "EZMorph-Bean Tests" );
+      suite.addTest( DynaBeanToBeanMorpherTest.suite() );
+      suite.addTest( MorphDynaClassTest.suite() );
+      suite.addTest( MorphDynaBeanTest.suite() );
+
       return suite;
    }
 
    /**
     * Construct a new instance.
     */
-   public AllEZMorphTestSuite( String name )
+   public BeanTestSuite( String name )
    {
       super( name );
    }
