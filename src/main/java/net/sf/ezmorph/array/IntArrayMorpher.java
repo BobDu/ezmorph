@@ -26,10 +26,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs an array to a int[].
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class IntArrayMorpher extends AbstractArrayMorpher
+public final class IntArrayMorpher extends AbstractArrayMorpher
 {
    private static final Class INT_ARRAY_CLASS = int[].class;
    private int defaultValue;

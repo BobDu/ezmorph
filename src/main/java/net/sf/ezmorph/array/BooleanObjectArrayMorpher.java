@@ -26,10 +26,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs an array to a Boolean[].
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class BooleanObjectArrayMorpher extends AbstractArrayMorpher
+public final class BooleanObjectArrayMorpher extends AbstractArrayMorpher
 {
    private static final Class BOOLEAN_OBJECT_ARRAY_CLASS = Boolean[].class;
    private Boolean defaultValue;

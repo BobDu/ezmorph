@@ -23,10 +23,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs to a char.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class CharMorpher extends AbstractPrimitiveMorpher
+public final class CharMorpher extends AbstractPrimitiveMorpher
 {
    private char defaultValue;
 
@@ -82,7 +82,7 @@ public class CharMorpher extends AbstractPrimitiveMorpher
 
    /**
     * Morphs the input object into an output object of the supported type.
-    * 
+    *
     * @param value The input value to be morphed
     * @exception MorphException if conversion cannot be performed successfully
     */

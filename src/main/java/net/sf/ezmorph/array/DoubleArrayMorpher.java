@@ -26,10 +26,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs an array to a double[].
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class DoubleArrayMorpher extends AbstractArrayMorpher
+public final class DoubleArrayMorpher extends AbstractArrayMorpher
 {
    private static final Class DOUBLE_ARRAY_CLASS = double[].class;
    private double defaultValue;

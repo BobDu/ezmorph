@@ -33,10 +33,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 /**
  * Morphs to a subclass of Number.<br>
  * Supported types are - Byte, Short, Integer, Long, Float, Number
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class NumberMorpher extends AbstractObjectMorpher
+public final class NumberMorpher extends AbstractObjectMorpher
 {
    private Number defaultValue;
    private Class type;

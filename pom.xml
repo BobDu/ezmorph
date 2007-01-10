@@ -7,7 +7,7 @@
    <groupId>net.sf.ezmorph</groupId>
    <artifactId>ezmorph</artifactId>
    <packaging>jar</packaging>
-   <version>0.9.2</version>
+   <version>0.9.3</version>
    <name>ezmorph</name>
 
    <url>http://ezmorph.sourceforge.net</url>
@@ -64,19 +64,25 @@
          <artifactId>commons-lang</artifactId>
          <version>2.2</version>
       </dependency>
-      <!--
-         <dependency>
+      <dependency>
+         <groupId>commons-beanutils</groupId>
+         <artifactId>commons-beanutils</artifactId>
+         <version>1.7.0</version>
+         <optional>true</optional>
+      </dependency>
+      <dependency>
          <groupId>commons-logging</groupId>
          <artifactId>commons-logging</artifactId>
          <version>1.1</version>
-         </dependency>
-         <dependency>
+         <optional>true</optional>
+      </dependency>
+      <dependency>
          <groupId>log4j</groupId>
          <artifactId>log4j</artifactId>
          <version>1.2.13</version>
+         <optional>true</optional>
          <scope>runtime</scope>
-         </dependency>
-      -->
+      </dependency>
    </dependencies>
 
    <prerequisites>
@@ -194,20 +200,6 @@
       </pluginRepository>
    </pluginRepositories>
 
-   <distributionManagement>
-      <!--
-         <snapshotRepository>
-         <id>sf_snapshots</id>
-         <name>SourceForge Snapshot</name>
-         <url>
-         scpexe://ssh.sf.net/home/groups/e/ez/ezmorph/htdocs/m2/repo
-         </url>
-         </snapshotRepository>
-      -->
-      <site>
-         <id>sf_website</id>
-         <url>scpexe://ssh.sf.net/home/groups/e/ez/ezmorph/htdocs</url>
-      </site>
-   </distributionManagement>
+   <distributionManagement/>
 
 </project>

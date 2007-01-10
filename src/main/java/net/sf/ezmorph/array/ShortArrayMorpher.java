@@ -26,10 +26,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs an array to a short[].
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class ShortArrayMorpher extends AbstractArrayMorpher
+public final class ShortArrayMorpher extends AbstractArrayMorpher
 {
    private static final Class SHORT_ARRAY_CLASS = short[].class;
    private short defaultValue;

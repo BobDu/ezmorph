@@ -24,7 +24,7 @@ import net.sf.ezmorph.ObjectMorpher;
  *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class StringMorpher implements ObjectMorpher
+public final class StringMorpher implements ObjectMorpher
 {
    private static final StringMorpher INSTANCE = new StringMorpher();
 

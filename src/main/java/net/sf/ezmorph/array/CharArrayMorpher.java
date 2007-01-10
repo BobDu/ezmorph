@@ -26,10 +26,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs an array to a char[].
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class CharArrayMorpher extends AbstractArrayMorpher
+public final class CharArrayMorpher extends AbstractArrayMorpher
 {
    private static final Class CHAR_ARRAY_CLASS = char[].class;
    private char defaultValue;

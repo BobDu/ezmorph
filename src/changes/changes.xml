@@ -8,6 +8,42 @@
    </properties>
    <body>
       <release
+         version="N/A"
+         date="2007-01-09"
+         desc="Current development version">
+         <action
+            dev="Andres Almiray"
+            type="update">
+            All Morphers are now final.
+         </action>
+         <action
+            dev="Andres Almiray"
+            issue="1632806"
+            type="add">
+            Added BeanMorpher, can morph from JavaBean to any
+            JavaBean/DynaBean.
+         </action>
+         <action
+            dev="Andres Almiray"
+            issue="1632805"
+            type="add">
+            Added DynaBeanToBeanMorpher (from Json-lib), morphs from
+            DynaBean to JavaBean.
+         </action>
+         <action
+            dev="Andres Almiray"
+            issue="1632805"
+            type="add">
+            Added MorphDynaClass &amp; MorhDynaBean (from Json-lib).
+         </action>
+         <action
+            dev="Andres Almiray"
+            type="fix"
+            issue="1632689">
+            ClassMorpher does not morph a Class value.
+         </action>
+      </release>
+      <release
          version="0.9.2"
          date="2006-12-12"
          desc="Service release">

@@ -26,10 +26,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs an array to a float[].
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class FloatArrayMorpher extends AbstractArrayMorpher
+public final class FloatArrayMorpher extends AbstractArrayMorpher
 {
    private static final Class FLOAT_ARRAY_CLASS = float[].class;
    private float defaultValue;

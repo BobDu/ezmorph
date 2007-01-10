@@ -23,10 +23,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs to a long.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class LongMorpher extends AbstractIntegerMorpher
+public final class LongMorpher extends AbstractIntegerMorpher
 {
    private long defaultValue;
 
@@ -82,7 +82,7 @@ public class LongMorpher extends AbstractIntegerMorpher
 
    /**
     * Morphs the input object into an output object of the supported type.
-    * 
+    *
     * @param value The input value to be morphed
     * @exception MorphException if conversion cannot be performed successfully
     */

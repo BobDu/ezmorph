@@ -26,10 +26,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs to a BigDecimal.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class BigDecimalMorpher extends AbstractObjectMorpher
+public final class BigDecimalMorpher extends AbstractObjectMorpher
 {
    private BigDecimal defaultValue;
 

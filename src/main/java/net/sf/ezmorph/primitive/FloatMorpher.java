@@ -23,10 +23,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Moprhs to a float.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class FloatMorpher extends AbstractDecimalMorpher
+public final class FloatMorpher extends AbstractDecimalMorpher
 {
    private float defaultValue;
 
@@ -82,7 +82,7 @@ public class FloatMorpher extends AbstractDecimalMorpher
 
    /**
     * Morphs the input object into an output object of the supported type.
-    * 
+    *
     * @param value The input value to be morphed
     * @exception MorphException if conversion cannot be performed successfully
     */

@@ -35,7 +35,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class DateMorpher extends AbstractObjectMorpher
+public final class DateMorpher extends AbstractObjectMorpher
 {
    private Date defaultValue;
    private String[] formats;

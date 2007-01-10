@@ -23,10 +23,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs to a Boolean.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class BooleanObjectMorpher extends AbstractObjectMorpher
+public final class BooleanObjectMorpher extends AbstractObjectMorpher
 {
    private Boolean defaultValue;
 

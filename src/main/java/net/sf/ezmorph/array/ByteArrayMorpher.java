@@ -26,10 +26,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs an array to a byte[].
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class ByteArrayMorpher extends AbstractArrayMorpher
+public final class ByteArrayMorpher extends AbstractArrayMorpher
 {
    private static final Class BYTE_ARRAY_CLASS = byte[].class;
    private byte defaultValue;

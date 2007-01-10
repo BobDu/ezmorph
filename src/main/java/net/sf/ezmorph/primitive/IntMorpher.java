@@ -23,10 +23,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs to an int.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class IntMorpher extends AbstractIntegerMorpher
+public final class IntMorpher extends AbstractIntegerMorpher
 {
    private int defaultValue;
 
@@ -82,7 +82,7 @@ public class IntMorpher extends AbstractIntegerMorpher
 
    /**
     * Morphs the input object into an output object of the supported type.
-    * 
+    *
     * @param value The input value to be morphed
     * @exception MorphException if conversion cannot be performed successfully
     */

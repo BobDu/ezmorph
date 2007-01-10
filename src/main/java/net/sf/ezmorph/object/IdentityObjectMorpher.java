@@ -20,10 +20,10 @@ import net.sf.ezmorph.ObjectMorpher;
 
 /**
  * Morpher that performs no conversion.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class IdentityObjectMorpher implements ObjectMorpher
+public final class IdentityObjectMorpher implements ObjectMorpher
 {
    private static final IdentityObjectMorpher INSTANCE = new IdentityObjectMorpher();
 

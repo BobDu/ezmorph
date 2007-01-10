@@ -27,10 +27,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs to a BigInteger.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class BigIntegerMorpher extends AbstractObjectMorpher
+public final class BigIntegerMorpher extends AbstractObjectMorpher
 {
    private BigInteger defaultValue;
 

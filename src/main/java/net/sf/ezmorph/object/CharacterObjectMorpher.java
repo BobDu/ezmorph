@@ -23,10 +23,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs to a Character.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class CharacterObjectMorpher extends AbstractObjectMorpher
+public final class CharacterObjectMorpher extends AbstractObjectMorpher
 {
    private Character defaultValue;
 

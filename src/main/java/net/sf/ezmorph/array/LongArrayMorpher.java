@@ -26,10 +26,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs an array to a long[].
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class LongArrayMorpher extends AbstractArrayMorpher
+public final class LongArrayMorpher extends AbstractArrayMorpher
 {
    private static final Class LONG_ARRAY_CLASS = long[].class;
    private long defaultValue;
