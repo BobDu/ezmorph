@@ -1100,4 +1100,8 @@ public class ArrayAssertions extends Assert
                actuals[i] );
       }
    }
+
+   private ArrayAssertions(){
+
+   }
 }

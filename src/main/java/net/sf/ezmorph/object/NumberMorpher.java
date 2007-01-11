@@ -129,11 +129,10 @@ public final class NumberMorpher extends AbstractObjectMorpher
       String str = String.valueOf( value )
             .trim();
 
-      if( !type.isPrimitive() ){
+      if( !type.isPrimitive()
+            && (value == null || str.length() == 0 || "null".equalsIgnoreCase( str )) ){
          // if empty string and class != primitive treat it like null
-         if( value == null || str.length() == 0 || "null".equalsIgnoreCase( str ) ){
-            return null;
-         }
+         return null;
       }
 
       if( isDecimalNumber( type ) ){
