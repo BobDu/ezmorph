@@ -24,7 +24,7 @@
 				</p>
 				<p>
 					Example:
-					<textarea cols="80" rows="11" name="srccode" class="java:nogutter:nocontrols">
+					<textarea cols="80" rows="21" name="srccode" class="java:nogutter:nocontrols">
    int i = new IntMorpher().morph( "123" );
    assertEquals( 123, i ); // true!
 							  
@@ -35,7 +35,17 @@
                            new BooleanObjectMorpher() ).morph(
                                 new String[]{ "true", "false" } );
    assertEquals( Boolean.TRUE, bools[0] ); // true!
-   assertEquals( Boolean.FALSE, bools[1] ); // true!</textarea>
+   assertEquals( Boolean.FALSE, bools[1] ); // true!
+   
+   // will morph a DynaBean into a MyBean instance
+   DynaBean dynaBean = ... // initialized elsewhere
+   morpherRegistry.registerMorpher( new BeanMorpher( MyBean.class, morpherRegistry ) );
+   MyBean myBean = (MyBean) morpherRegistry.moprh( MyBean.class, dynaBean );
+   
+   // will morph a BeanA into a BeanB, where a property of BeanB is also a property of beanA
+   BeanA beanA = ... // initialized elsewhere
+   morpherRegistry.registerMorpher( new BeanMorpher( BeanB.class, morpherRegistry ) );
+   BeanB beanB = (BeanB) morpherRegistry.morph( BeanB.class, beanA );</textarea>
 				</p>
 				<p>
 					EZMorph comes with a handy class for working with

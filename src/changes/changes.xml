@@ -27,13 +27,6 @@
             dev="Andres Almiray"
             issue="1632805"
             type="add">
-            Added DynaBeanToBeanMorpher (from Json-lib), morphs from
-            DynaBean to JavaBean.
-         </action>
-         <action
-            dev="Andres Almiray"
-            issue="1632805"
-            type="add">
             Added MorphDynaClass &amp; MorhDynaBean (from Json-lib).
          </action>
          <action

@@ -28,9 +28,14 @@ import net.sf.ezmorph.MorphException;
 import net.sf.ezmorph.MorphUtils;
 import net.sf.ezmorph.MorpherRegistry;
 import net.sf.ezmorph.bean.sample.BeanA;
+import net.sf.ezmorph.bean.sample.BeanB;
+import net.sf.ezmorph.bean.sample.BeanC;
 import net.sf.ezmorph.bean.sample.ObjectBean;
 import net.sf.ezmorph.bean.sample.PrimitiveBean;
 import net.sf.ezmorph.bean.sample.TypedBean;
+import net.sf.ezmorph.test.ArrayAssertions;
+
+import org.apache.commons.beanutils.DynaBean;
 
 /**
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
@@ -199,6 +204,57 @@ public class BeanMorpherTest extends TestCase
       assertEquals( false, beanA.isBool() );
       assertEquals( 24, beanA.getInteger() );
       assertEquals( "dyna morph", beanA.getString() );
+   }
+
+   public void testMorph_nested__dynaBeans() throws Exception
+   {
+      Map properties = new HashMap();
+      properties.put( "string", String.class );
+      properties.put( "integer", Integer.class );
+      properties.put( "bool", Boolean.class );
+      MorphDynaClass dynaClass = new MorphDynaClass( properties );
+      MorphDynaBean dynaBeanA = (MorphDynaBean) dynaClass.newInstance( morpherRegistry );
+      dynaBeanA.setDynaBeanClass( dynaClass );
+      dynaBeanA.set( "string", "dyna morph" );
+      dynaBeanA.set( "integer", "24" );
+      dynaBeanA.set( "bool", "false" );
+
+      properties = new HashMap();
+      properties.put( "string", String.class );
+      properties.put( "integer", Integer.class );
+      properties.put( "bool", Boolean.class );
+      properties.put( "intarray", int[].class );
+      dynaClass = new MorphDynaClass( properties );
+      MorphDynaBean dynaBeanB = (MorphDynaBean) dynaClass.newInstance( morpherRegistry );
+      dynaBeanB.setDynaBeanClass( dynaClass );
+      dynaBeanB.set( "string", "dyna morph B" );
+      dynaBeanB.set( "integer", "48" );
+      dynaBeanB.set( "bool", "true" );
+      dynaBeanB.set( "intarray", new int[] { 4, 5, 6 } );
+
+      properties = new HashMap();
+      properties.put( "beanA", DynaBean.class );
+      properties.put( "beanB", DynaBean.class );
+      dynaClass = new MorphDynaClass( properties );
+      MorphDynaBean dynaBeanC = (MorphDynaBean) dynaClass.newInstance( morpherRegistry );
+      dynaBeanC.setDynaBeanClass( dynaClass );
+      dynaBeanC.set( "beanA", dynaBeanA );
+      dynaBeanC.set( "beanB", dynaBeanB );
+
+      morpherRegistry.registerMorpher( new BeanMorpher( BeanA.class, morpherRegistry ) );
+      morpherRegistry.registerMorpher( new BeanMorpher( BeanB.class, morpherRegistry ) );
+      BeanMorpher morpher = new BeanMorpher( BeanC.class, morpherRegistry );
+      BeanC beanC = (BeanC) morpher.morph( dynaBeanC );
+      assertNotNull( beanC );
+      BeanA beanA = beanC.getBeanA();
+      assertEquals( false, beanA.isBool() );
+      assertEquals( 24, beanA.getInteger() );
+      assertEquals( "dyna morph", beanA.getString() );
+      BeanB beanB = beanC.getBeanB();
+      assertEquals( true, beanB.isBool() );
+      assertEquals( 48, beanB.getInteger() );
+      assertEquals( "dyna morph B", beanB.getString() );
+      ArrayAssertions.assertEquals( new int[] { 4, 5, 6 }, beanB.getIntarray() );
    }
 
    public void testMorph_null()

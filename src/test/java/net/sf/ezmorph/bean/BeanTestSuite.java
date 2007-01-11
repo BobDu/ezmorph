@@ -43,7 +43,7 @@ public class BeanTestSuite extends TestCase
    {
       TestSuite suite = new TestSuite();
       suite.setName( "EZMorph-Bean Tests" );
-      suite.addTest( DynaBeanToBeanMorpherTest.suite() );
+      suite.addTest( BeanMorpherTest.suite() );
       suite.addTest( MorphDynaClassTest.suite() );
       suite.addTest( MorphDynaBeanTest.suite() );
 
