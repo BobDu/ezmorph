@@ -42,7 +42,7 @@
    morpherRegistry.registerMorpher( new BeanMorpher( MyBean.class, morpherRegistry ) );
    MyBean myBean = (MyBean) morpherRegistry.moprh( MyBean.class, dynaBean );
    
-   // will morph a BeanA into a BeanB, where a property of BeanB is also a property of beanA
+   // will morph a BeanA into a BeanB, where a property of BeanB is also a property of BeanA
    BeanA beanA = ... // initialized elsewhere
    morpherRegistry.registerMorpher( new BeanMorpher( BeanB.class, morpherRegistry ) );
    BeanB beanB = (BeanB) morpherRegistry.morph( BeanB.class, beanA );</textarea>
