@@ -14,7 +14,7 @@
          <action
             dev="Andres Almiray"
             type="delete">
-            Removed duplicate code from net.sf.exmorph.object Morphers.
+            Removed duplicate code from net.sf.ezmorph.object Morphers.
          </action>
          <action
             dev="Andres Almiray"
