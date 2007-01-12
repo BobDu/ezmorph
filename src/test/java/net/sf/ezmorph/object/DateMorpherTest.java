@@ -54,6 +54,53 @@ public class DateMorpherTest extends AbstractObjectMorpherTestCase
 
    // -----------------------------------------------------------------------
 
+   public void testConstructor_illegalFormats()
+   {
+      try{
+         new DateMorpher( null );
+         fail( "Should have thrown a MorphException" );
+      }
+      catch( MorphException expected ){
+         // ok
+      }
+
+      try{
+         new DateMorpher( new String[0] );
+         fail( "Should have thrown a MorphException" );
+      }
+      catch( MorphException expected ){
+         // ok
+      }
+
+      try{
+         new DateMorpher( null,false );
+         fail( "Should have thrown a MorphException" );
+      }
+      catch( MorphException expected ){
+         // ok
+      }
+
+      try{
+         new DateMorpher( new String[0], false );
+         fail( "Should have thrown a MorphException" );
+      }
+      catch( MorphException expected ){
+         // ok
+      }
+   }
+
+   public void testMorph_canNotParseDate()
+   {
+      DateMorpher morpher = new DateMorpher( new String[] { "dd/MM/yyyy" } );
+      try{
+         morpher.morph( "01-01-1976" );
+         fail( "Should ve have thrown a MorphException" );
+      }
+      catch( MorphException expected ){
+         // ok
+      }
+   }
+
    public void testMorph_matchFirstPattern()
    {
       Date expected = getUnixEpoch();
@@ -79,7 +126,7 @@ public class DateMorpherTest extends AbstractObjectMorpherTestCase
    {
       try{
          morpher.morph( new Object[0] );
-         fail( "Should have thrown a ConversionException" );
+         fail( "Should have thrown a MorphException" );
       }
       catch( MorphException expected ){
          // ok

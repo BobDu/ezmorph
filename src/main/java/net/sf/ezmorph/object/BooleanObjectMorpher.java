@@ -113,9 +113,4 @@ public final class BooleanObjectMorpher extends AbstractObjectMorpher
    {
       return Boolean.class;
    }
-
-   public boolean supports( Class clazz )
-   {
-      return !clazz.isArray();
-   }
 }

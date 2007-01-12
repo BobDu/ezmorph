@@ -110,9 +110,4 @@ public final class CharacterObjectMorpher extends AbstractObjectMorpher
    {
       return Character.class;
    }
-
-   public boolean supports( Class clazz )
-   {
-      return !clazz.isArray();
-   }
 }

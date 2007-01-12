@@ -30,7 +30,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  * Morphs a String to a Date.<br>
  * <p>
  * This morpher will iterate through the supplied formats until one succeeds or
- * the default value is returned (if default value is condigured).
+ * the default value is returned (if default value is configured).
  * </p>
  *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
@@ -47,6 +47,11 @@ public final class DateMorpher extends AbstractObjectMorpher
       this( formats, Locale.getDefault(), false );
    }
 
+   public DateMorpher( String[] formats, boolean lenient )
+   {
+      this( formats, Locale.getDefault(), lenient );
+   }
+
    public DateMorpher( String[] formats, Date defaultValue )
    {
       this( formats, defaultValue, Locale.getDefault(), false );
@@ -56,7 +61,7 @@ public final class DateMorpher extends AbstractObjectMorpher
    {
       super( true );
       if( formats == null || formats.length == 0 ){
-         throw new IllegalArgumentException( "invalid array of formats" );
+         throw new MorphException( "invalid array of formats" );
       }
       // should use defensive copying ?
       this.formats = formats;
@@ -71,10 +76,15 @@ public final class DateMorpher extends AbstractObjectMorpher
       setDefaultValue( defaultValue );
    }
 
+   public DateMorpher( String[] formats, Locale locale )
+   {
+      this( formats, locale, false );
+   }
+
    public DateMorpher( String[] formats, Locale locale, boolean lenient )
    {
       if( formats == null || formats.length == 0 ){
-         throw new IllegalArgumentException( "invalid array of formats" );
+         throw new MorphException( "invalid array of formats" );
       }
       // should use defensive copying ?
       this.formats = formats;

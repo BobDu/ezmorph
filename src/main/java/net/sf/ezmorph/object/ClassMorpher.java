@@ -53,10 +53,6 @@ public final class ClassMorpher implements ObjectMorpher
          return null;
       }
 
-      if( !supports( value.getClass() ) ){
-         throw new MorphException( "Class not supported. " + value.getClass() );
-      }
-
       if( value instanceof Class ){
          return (Class) value;
       }

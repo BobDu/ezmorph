@@ -16,6 +16,7 @@
 
 package net.sf.ezmorph;
 
+import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,11 +28,19 @@ import net.sf.ezmorph.object.IdentityObjectMorpher;
 
 /**
  * Convenient class that manages Morphers.<br>
- * 
+ * A MorpherRehistry manages a group of Morphers. A Morpher will always be
+ * associated with a target class, it is possible to have several Morphers
+ * registered for a target class, if this is the case, the first Morpher will be
+ * used when performing a conversion and no specific Morpher is selected in
+ * advance.<br>
+ * {@link MorphUtils} may be used to register standard Morphers for primitive
+ * types and primitive wrappers, as well as arrays of those types.
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
-public class MorpherRegistry
+public class MorpherRegistry implements Serializable
 {
+   private static final long serialVersionUID = -4805239625300200760L;
    private Map morphers = new HashMap();
 
    public MorpherRegistry()
@@ -51,8 +60,8 @@ public class MorpherRegistry
     * Deregister the specified Morpher.<br>
     * The registry will remove the target <code>Class</code> from the morphers
     * Map if it has no other registered morphers.
-    * 
-    * @param morpher
+    *
+    * @param morpher the target Morpher to remove
     */
    public void deregisterMorpher( Morpher morpher )
    {
@@ -69,6 +78,8 @@ public class MorpherRegistry
     * Returns a morpher for <code>clazz</code>.<br>
     * If several morphers are found for that class, it returns the first. If no
     * Morpher is found it will return the IdentityObjectMorpher.
+    *
+    * @param clazz the target class for which a Morpher may be associated
     */
    public Morpher getMorpherFor( Class clazz )
    {
@@ -85,6 +96,9 @@ public class MorpherRegistry
     * Returns all morphers for <code>clazz</code>.<br>
     * If no Morphers are found it will return an array containing the
     * IdentityObjectMorpher.
+    *
+    * @param clazz the target class for which a Morpher or Morphers may be
+    *        associated
     */
    public Morpher[] getMorphersFor( Class clazz )
    {
@@ -106,10 +120,11 @@ public class MorpherRegistry
     * Morphs and object to the specified target class.<br>
     * This method uses reflection to invoke primitive Morphers and Morphers that
     * do not implement ObjectMorpher.
-    * 
-    * @param target
-    * @param value
-    * @return
+    *
+    * @param target the target class to morph to
+    * @param value the value to morph
+    * @return an instance of the target class if a suitable Morpher was found
+    * @throws MorphException if an error occurs during the conversion
     */
    public Object morph( Class target, Object value )
    {
@@ -132,8 +147,9 @@ public class MorpherRegistry
     * Register a Morpher for a target <code>Class</code>.<br>
     * The target class is the class this Morpher morphs to. If there are another
     * morphers registered to that class, it will be appended to a List.
-    * 
-    * @param morpher
+    *
+    * @param morpher a Morpher to register. The method <code>morphsTo()</code>
+    *        is used to associate the Morpher to a target Class
     */
    public void registerMorpher( Morpher morpher )
    {

@@ -137,11 +137,6 @@ public final class BigIntegerMorpher extends AbstractObjectMorpher
       return BigInteger.class;
    }
 
-   public boolean supports( Class clazz )
-   {
-      return !clazz.isArray();
-   }
-
    /**
     * Trims the String from the begining to the first "."
     */

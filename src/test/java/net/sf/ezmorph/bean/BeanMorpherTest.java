@@ -290,6 +290,48 @@ public class BeanMorpherTest extends TestCase
       assertEquals( Object.class, primitiveBean.getPclass() );
    }
 
+   public void testMorph_ObjectBean_to_PrimitiveBean_lenient()
+   {
+      ObjectBean objectBean = new ObjectBean();
+      objectBean.setPclass( Object.class );
+      objectBean.setPstring( "MORPH" );
+      objectBean.setPbean( objectBean );
+      morpherRegistry.registerMorpher( new BeanMorpher( PrimitiveBean.class, morpherRegistry, true ) );
+      PrimitiveBean primitiveBean = (PrimitiveBean) morpherRegistry.morph( PrimitiveBean.class,
+            objectBean );
+      assertNotNull( primitiveBean );
+      assertEquals( false, primitiveBean.isPboolean() );
+      assertEquals( (byte) 0, primitiveBean.getPbyte() );
+      assertEquals( (short) 0, primitiveBean.getPshort() );
+      assertEquals( 0, primitiveBean.getPint() );
+      assertEquals( 0L, primitiveBean.getPlong() );
+      assertEquals( 0f, primitiveBean.getPfloat(), 0f );
+      assertEquals( 0d, primitiveBean.getPdouble(), 0d );
+      assertEquals( '\0', primitiveBean.getPchar() );
+      assertEquals( null, primitiveBean.getParray() );
+      assertEquals( null, primitiveBean.getPlist() );
+      assertEquals( null, primitiveBean.getPbean() );
+      assertEquals( null, primitiveBean.getPmap() );
+      assertEquals( "MORPH", primitiveBean.getPstring() );
+      assertEquals( Object.class, primitiveBean.getPclass() );
+   }
+
+   public void testMorph_ObjectBean_to_PrimitiveBean_notLenient()
+   {
+      ObjectBean objectBean = new ObjectBean();
+      objectBean.setPclass( Object.class );
+      objectBean.setPstring( "MORPH" );
+      objectBean.setPbean( objectBean );
+      morpherRegistry.registerMorpher( new BeanMorpher( PrimitiveBean.class, morpherRegistry ) );
+      try{
+         morpherRegistry.morph( PrimitiveBean.class, objectBean );
+         fail( "Should have thrown a MorphException" );
+      }
+      catch( MorphException expected ){
+         // ok
+      }
+   }
+
    public void testMorph_ObjectBean_to_TypedBean()
    {
       ObjectBean objectBean = new ObjectBean();
@@ -361,6 +403,18 @@ public class BeanMorpherTest extends TestCase
       assertEquals( null, typedBean.getPmap() );
       assertEquals( "MORPH", typedBean.getPstring() );
       assertEquals( Object.class, typedBean.getPclass() );
+   }
+
+   public void testMorph_unsupported()
+   {
+      BeanMorpher morpher = new BeanMorpher( BeanA.class, morpherRegistry );
+      try{
+         morpher.morph( new Object[0] );
+         fail( "Should vae thrown a MorphException" );
+      }
+      catch( MorphException expected ){
+         // ok
+      }
    }
 
    protected void setUp() throws Exception

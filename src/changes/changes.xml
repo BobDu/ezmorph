@@ -8,9 +8,24 @@
    </properties>
    <body>
       <release
-         version="N/A"
-         date="2007-01-09"
-         desc="Current development version">
+         version="1.0"
+         date="2007-01-12"
+         desc="Fourth public release">
+         <action
+            dev="Andres Almiray"
+            type="delete">
+            Removed duplicate code from net.sf.exmorph.object Morphers.
+         </action>
+         <action
+            dev="Andres Almiray"
+            type="update">
+            Updated the javadocs.
+         </action>
+         <action
+            dev="Andres Almiray"
+            type="update">
+            Updated the tests (98% code coverage).
+         </action>
          <action
             dev="Andres Almiray"
             type="update">

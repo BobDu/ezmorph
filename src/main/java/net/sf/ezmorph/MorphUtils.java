@@ -49,7 +49,9 @@ import net.sf.ezmorph.primitive.ShortMorpher;
  */
 public class MorphUtils
 {
+   /** Constant value for BigDecimal(1) */
    public static final BigDecimal BIGDECIMAL_ONE = new BigDecimal( "1" );
+   /** Constant value for BigDecimal(0) */
    public static final BigDecimal BIGDECIMAL_ZERO = new BigDecimal( "0" );
 
    /**

@@ -20,7 +20,7 @@ import net.sf.ezmorph.ObjectMorpher;
 
 /**
  * Base class for ObjectMorpher implementations.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
 public abstract class AbstractObjectMorpher implements ObjectMorpher
@@ -51,5 +51,17 @@ public abstract class AbstractObjectMorpher implements ObjectMorpher
    public void setUseDefault( boolean useDefault )
    {
       this.useDefault = useDefault;
+   }
+
+   /**
+    * Returns true if the Morpher supports conversion from this Class.<br>
+    * Supports any type that is not an Array.
+    *
+    * @param clazz the source Class
+    * @return true if clazz is supported by this morpher, false otherwise.
+    */
+   public boolean supports( Class clazz )
+   {
+      return !clazz.isArray();
    }
 }

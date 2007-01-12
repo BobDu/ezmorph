@@ -45,6 +45,13 @@ public abstract class AbstractPrimitiveMorpher implements Morpher
       return useDefault;
    }
 
+   /**
+    * Returns true if the Morpher supports conversion from this Class.<br>
+    * Supports any type that is not an Array.
+    * 
+    * @param clazz the source Class
+    * @return true if clazz is supported by this morpher, false otherwise.
+    */
    public boolean supports( Class clazz )
    {
       return !clazz.isArray();

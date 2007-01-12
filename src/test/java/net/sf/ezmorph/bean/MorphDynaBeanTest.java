@@ -119,6 +119,30 @@ public class MorphDynaBeanTest extends TestCase
       assertFalse( dynaBean.equals( new Object() ) );
    }
 
+   public void testGet_simple_nullValue() throws Exception
+   {
+      Map properties = new HashMap();
+      properties.put( "int", Integer.class );
+      MorphDynaClass dynaClass = new MorphDynaClass( properties );
+      dynaBean = (MorphDynaBean) dynaClass.newInstance();
+      assertNull( dynaBean.get( "int" ) );
+
+      properties.clear();
+      properties.put( "int", Integer.TYPE );
+      dynaClass = new MorphDynaClass( properties );
+      dynaBean = (MorphDynaBean) dynaClass.newInstance();
+      assertEquals( 0, ((Integer) dynaBean.get( "int" )).intValue() );
+   }
+
+   public void testGet_mapped_nullValue() throws Exception
+   {
+      Map properties = new HashMap();
+      properties.put( "map", Map.class );
+      MorphDynaClass dynaClass = new MorphDynaClass( properties );
+      dynaBean = (MorphDynaBean) dynaClass.newInstance();
+      assertNull( dynaBean.get( "map","key" ) );
+   }
+
    public void testGet_unindexed()
    {
       try{

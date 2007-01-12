@@ -137,9 +137,4 @@ public final class BigDecimalMorpher extends AbstractObjectMorpher
    {
       return BigDecimal.class;
    }
-
-   public boolean supports( Class clazz )
-   {
-      return !clazz.isArray();
-   }
 }

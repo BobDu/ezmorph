@@ -42,7 +42,7 @@ public class BigDecimalMorpherTest extends AbstractObjectMorpherTestCase
       Object actual = ((BigDecimalMorpher) getMorpherWithDefaultValue()).morph( MorphUtils.BIGDECIMAL_ZERO );
       assertEquals( MorphUtils.BIGDECIMAL_ZERO, actual );
    }
-   
+
    public void testBigDecimalMorph_BigInteger()
    {
       Object actual = ((BigDecimalMorpher) getMorpherWithDefaultValue()).morph( BigInteger.ZERO );
@@ -51,8 +51,10 @@ public class BigDecimalMorpherTest extends AbstractObjectMorpherTestCase
 
    public void testBigDecimalMorph_Number()
    {
-      Object actual = ((BigDecimalMorpher) getMorpherWithDefaultValue()).morph( new Double( 1 ) );
-      assertEquals( new BigDecimal( 1d ), actual );
+      Object actual = ((BigDecimalMorpher) getMorpherWithDefaultValue()).morph( new Float( 1f ) );
+      assertEquals( MorphUtils.BIGDECIMAL_ONE, actual );
+      actual = ((BigDecimalMorpher) getMorpherWithDefaultValue()).morph( new Double( 1d ) );
+      assertEquals( MorphUtils.BIGDECIMAL_ONE, actual );
    }
 
    public void testBigDecimalMorph_Number__Double_INFINITY()
@@ -104,20 +106,20 @@ public class BigDecimalMorpherTest extends AbstractObjectMorpherTestCase
       Object actual = ((BigDecimalMorpher) getMorpherWithDefaultValue()).morph( "123.45" );
       assertEquals( new BigDecimal( "123.45" ), actual );
    }
-   
+
    public void testBigDecimalMorph_String_empty()
    {
-      assertNull( ((BigDecimalMorpher)getMorpher()).morph( "" ) );
+      assertNull( ((BigDecimalMorpher) getMorpher()).morph( "" ) );
    }
-   
+
    public void testBigDecimalMorph_String_null()
    {
-      assertNull( ((BigDecimalMorpher)getMorpher()).morph( null ) );
+      assertNull( ((BigDecimalMorpher) getMorpher()).morph( null ) );
    }
-   
+
    public void testBigDecimalMorph_String_null2()
    {
-      assertNull( ((BigDecimalMorpher)getMorpher()).morph( "null" ) );
+      assertNull( ((BigDecimalMorpher) getMorpher()).morph( "null" ) );
    }
 
    public void testBigDecimalMorph_throwException()

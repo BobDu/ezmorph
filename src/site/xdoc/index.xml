@@ -22,7 +22,7 @@
                </li>
                <li>Supports transformations with DynaBeans</li>
                <li>JDK 1.3.1 compatible</li>
-               <li>Small memory footprint (~80K)</li>
+               <li>Small memory footprint (~76K)</li>
             </ul>
          </p>
          <p>
@@ -135,7 +135,7 @@
                      <td>
                         Spring has an excellent support for
                         PropertyEditors, that can also be used to
-                        transform Objects to a from Strings.
+                        transform Objects to/from Strings.
                      </td>
                   </tr>
                   <tr>

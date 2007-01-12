@@ -50,8 +50,20 @@ public class BigIntegerMorpherTest extends AbstractObjectMorpherTestCase
 
    public void testBigIntegerMorph_Number()
    {
-      Object actual = ((BigIntegerMorpher) getMorpherWithDefaultValue()).morph( new Long( 1L ) );
-      assertEquals( BigInteger.valueOf( 1L ), actual );
+      Object actual = ((BigIntegerMorpher) getMorpher()).morph( new Byte( (byte) 1 ) );
+      assertEquals( BigInteger.ONE, actual );
+      actual = ((BigIntegerMorpher) getMorpher()).morph( new Short( (short) 1 ) );
+      assertEquals( BigInteger.ONE, actual );
+      actual = ((BigIntegerMorpher) getMorpher()).morph( new Integer( 1 ) );
+      assertEquals( BigInteger.ONE, actual );
+      actual = ((BigIntegerMorpher) getMorpher()).morph( new Long( 1L ) );
+      assertEquals( BigInteger.ONE, actual );
+      actual = ((BigIntegerMorpher) getMorpher()).morph( new Double( 1d ) );
+      assertEquals( BigInteger.ONE, actual );
+      actual = ((BigIntegerMorpher) getMorpher()).morph( new Float( 1f ) );
+      assertEquals( BigInteger.ONE, actual );
+      actual = ((BigIntegerMorpher) getMorpher()).morph( MorphUtils.BIGDECIMAL_ONE );
+      assertEquals( BigInteger.ONE, actual );
    }
 
    public void testBigIntegerMorph_Number__Double_INFINITY()

@@ -20,25 +20,21 @@ package net.sf.ezmorph;
  * Marker interface for morphers.<br>
  * All implementations must have a <code>morph( Object value )</code> method
  * that returns the appropiate morphed value.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
 public interface Morpher
 {
    /**
-    * <p>
     * Returns the target Class for conversion.
-    * <p>
-    * 
+    *
     * @return the target Class for conversion.
     */
    Class morphsTo();
 
    /**
-    * <p>
     * Returns true if the Morpher supports conversion from this Class.
-    * <p>
-    * 
+    *
     * @param clazz the source Class
     * @return true if clazz is supported by this morpher, false otherwise.
     */

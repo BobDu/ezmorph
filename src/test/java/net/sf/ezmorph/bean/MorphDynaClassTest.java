@@ -45,6 +45,25 @@ public class MorphDynaClassTest extends TestCase
       return suite;
    }
 
+   public void testConstructor_emptyAttributes()
+   {
+      try{
+         new MorphDynaClass( null );
+         fail( "Expected a MorphException" );
+      }
+      catch( MorphException exception ){
+         // ok
+      }
+
+      try{
+         new MorphDynaClass( new HashMap() );
+         fail( "Expected a MorphException" );
+      }
+      catch( MorphException exception ){
+         // ok
+      }
+   }
+
    public void testEquals()
    {
       Map properties = new HashMap();
@@ -69,7 +88,7 @@ public class MorphDynaClassTest extends TestCase
          properties.put( "obj", Object.class.getName() );
          MorphDynaClass dynaClass = new MorphDynaClass( properties );
          dynaClass.getDynaProperty( null );
-         fail( "Expected an MorphException" );
+         fail( "Expected a MorphException" );
       }
       catch( MorphException exception ){
          // ok
@@ -116,7 +135,7 @@ public class MorphDynaClassTest extends TestCase
          Map properties = new HashMap();
          properties.put( "array", Object[][].class );
          new MorphDynaClass( properties );
-         fail( "Expected an MorphException" );
+         fail( "Expected a MorphException" );
       }
       catch( MorphException exception ){
          // ok
@@ -129,7 +148,7 @@ public class MorphDynaClassTest extends TestCase
          Map properties = new HashMap();
          properties.put( "array", Object[][].class.getName() );
          new MorphDynaClass( properties );
-         fail( "Expected an MorphException" );
+         fail( "Expected a MorphException" );
       }
       catch( MorphException exception ){
          // ok

@@ -72,8 +72,13 @@ public class MorphException extends NestableRuntimeException
       this.cause = cause;
    }
 
+   /**
+    * Returns the cause of this exception.
+    *
+    * @return a Throwable that represents the cause of this exception
+    */
    public Throwable getCause()
    {
-      return (this.cause);
+      return this.cause;
    }
 }

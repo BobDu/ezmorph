@@ -111,8 +111,8 @@ public final class BeanMorpher implements ObjectMorpher
             setProperty( targetBean, name, sourceType, targetType, value );
          }
       }
-      catch( MorphException jsone ){
-         throw jsone;
+      catch( MorphException me ){
+         throw me;
       }
       catch( Exception e ){
          throw new MorphException( e );
@@ -128,7 +128,7 @@ public final class BeanMorpher implements ObjectMorpher
 
    public boolean supports( Class clazz )
    {
-      return !clazz.isArray() && !clazz.isInterface();
+      return !clazz.isArray();
    }
 
    private void setProperty( Object targetBean, String name, Class sourceType, Class targetType,

@@ -32,7 +32,8 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Morphs to a subclass of Number.<br>
- * Supported types are - Byte, Short, Integer, Long, Float, Number
+ * Supported types are - Byte, Short, Integer, Long, Float, BigInteger,
+ * BigtDecimal.
  *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
@@ -50,7 +51,11 @@ public final class NumberMorpher extends AbstractObjectMorpher
       }
 
       if( type != Byte.TYPE && type != Short.TYPE && type != Integer.TYPE && type != Long.TYPE
-            && type != Float.TYPE && type != Double.TYPE && !Number.class.isAssignableFrom( type ) ){
+            && type != Float.TYPE && type != Double.TYPE && !Byte.class.isAssignableFrom( type )
+            && !Short.class.isAssignableFrom( type ) && !Integer.class.isAssignableFrom( type )
+            && !Long.class.isAssignableFrom( type ) && !Float.class.isAssignableFrom( type )
+            && !Double.class.isAssignableFrom( type ) && !BigInteger.class.isAssignableFrom( type )
+            && !BigDecimal.class.isAssignableFrom( type ) ){
          throw new MorphException( "Must specify a Number subclass" );
       }
 
@@ -66,7 +71,11 @@ public final class NumberMorpher extends AbstractObjectMorpher
       }
 
       if( type != Byte.TYPE && type != Short.TYPE && type != Integer.TYPE && type != Long.TYPE
-            && type != Float.TYPE && type != Double.TYPE && !Number.class.isAssignableFrom( type ) ){
+            && type != Float.TYPE && type != Double.TYPE && !Byte.class.isAssignableFrom( type )
+            && !Short.class.isAssignableFrom( type ) && !Integer.class.isAssignableFrom( type )
+            && !Long.class.isAssignableFrom( type ) && !Float.class.isAssignableFrom( type )
+            && !Double.class.isAssignableFrom( type ) && !BigInteger.class.isAssignableFrom( type )
+            && !BigDecimal.class.isAssignableFrom( type ) ){
          throw new MorphException( "Must specify a Number subclass" );
       }
 
@@ -169,11 +178,6 @@ public final class NumberMorpher extends AbstractObjectMorpher
          throw new MorphException( "Default value must be of type " + type );
       }
       this.defaultValue = defaultValue;
-   }
-
-   public boolean supports( Class clazz )
-   {
-      return !clazz.isArray();
    }
 
    private boolean isDecimalNumber( Class type )

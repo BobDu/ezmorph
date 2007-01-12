@@ -52,14 +52,14 @@ public final class MorphDynaClass implements DynaClass, Serializable
       }
    };
 
-   private static final long serialVersionUID = 6499224578168410460L;
+   private static final long serialVersionUID = 689740135689363791L;
 
-   protected Map attributes;
-   protected Class beanClass;
-   protected DynaProperty dynaProperties[];
-   protected String name;
-   protected Map properties = new HashMap();
-   protected Class type;
+   private Map attributes;
+   private Class beanClass;
+   private DynaProperty dynaProperties[];
+   private String name;
+   private Map properties = new HashMap();
+   private Class type;
 
    public MorphDynaClass( Map attributes )
    {
@@ -188,10 +188,6 @@ public final class MorphDynaClass implements DynaClass, Serializable
    private void process()
    {
       this.beanClass = this.type;
-
-      if( !MorphDynaBean.class.isAssignableFrom( this.beanClass ) ){
-         throw new MorphException( "Unnasignable dynaClass " + beanClass );
-      }
 
       try{
          Iterator entries = attributes.entrySet()
