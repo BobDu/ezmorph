@@ -52,7 +52,7 @@ public final class MorphDynaClass implements DynaClass, Serializable
       }
    };
 
-   private static final long serialVersionUID = 689740135689363791L;
+   private static final long serialVersionUID = -613214016860871560L;
 
    private Map attributes;
    private Class beanClass;
@@ -66,7 +66,18 @@ public final class MorphDynaClass implements DynaClass, Serializable
       this( null, null, attributes );
    }
 
+   public MorphDynaClass( Map attributes, boolean exceptionOnEmptyAttributes )
+   {
+      this( null, null, attributes, exceptionOnEmptyAttributes );
+   }
+
    public MorphDynaClass( String name, Class type, Map attributes )
+   {
+      this( name, type, attributes, false );
+   }
+
+   public MorphDynaClass( String name, Class type, Map attributes,
+         boolean exceptionOnEmptyAttributes )
    {
       if( name == null ){
          name = "MorphDynaClass";
@@ -78,7 +89,11 @@ public final class MorphDynaClass implements DynaClass, Serializable
          throw new MorphException( "MorphDynaBean is not assignable from " + type.getName() );
       }
       if( attributes == null || attributes.isEmpty() ){
-         throw new MorphException( "Attributes map is null or empty." );
+         if( exceptionOnEmptyAttributes ){
+            throw new MorphException( "Attributes map is null or empty." );
+         }else{
+            attributes = new HashMap();
+         }
       }
       this.name = name;
       this.type = type;

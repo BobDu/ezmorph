@@ -47,8 +47,16 @@ public class MorphDynaClassTest extends TestCase
 
    public void testConstructor_emptyAttributes()
    {
+      MorphDynaClass dynaClass = new MorphDynaClass( null );
+      assertEquals( 0, dynaClass.getDynaProperties().length );
+      dynaClass = new MorphDynaClass( new HashMap() );
+      assertEquals( 0, dynaClass.getDynaProperties().length );
+   }
+
+   public void testConstructor_emptyAttributes_throwException()
+   {
       try{
-         new MorphDynaClass( null );
+         new MorphDynaClass( null, true );
          fail( "Expected a MorphException" );
       }
       catch( MorphException exception ){
@@ -56,7 +64,7 @@ public class MorphDynaClassTest extends TestCase
       }
 
       try{
-         new MorphDynaClass( new HashMap() );
+         new MorphDynaClass( new HashMap(), true );
          fail( "Expected a MorphException" );
       }
       catch( MorphException exception ){
