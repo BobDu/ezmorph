@@ -9,8 +9,14 @@
    <body>
       <release
          version="1.0.l"
-         date="2007-02-01"
+         date="2007-02-04"
          desc="Service release">
+         <action
+            dev="Andres Almiray"
+            issue="1651911"
+            type="fix">
+            Add number support for BooleanMorpher.
+         </action>
          <action
             dev="Andres Almiray"
             issue="1648039"

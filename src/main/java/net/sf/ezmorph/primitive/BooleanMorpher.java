@@ -98,6 +98,17 @@ public final class BooleanMorpher extends AbstractPrimitiveMorpher
 
       if( value instanceof Boolean ){
          return ((Boolean) value).booleanValue();
+      }else if( value instanceof Number ){
+         if( value instanceof Double
+               && (Double.isInfinite( ((Number) value).doubleValue() ) || Double.isNaN( ((Number) value).doubleValue() )) ){
+            return true;
+         }
+         if( value instanceof Float
+               && (Float.isInfinite( ((Number) value).floatValue() ) || Float.isNaN( ((Number) value).floatValue() )) ){
+            return true;
+         }
+         long l = ((Number) value).longValue();
+         return l != 0;
       }else{
          String s = String.valueOf( value );
 
