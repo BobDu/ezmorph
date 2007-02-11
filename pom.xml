@@ -58,6 +58,7 @@
          <groupId>junit</groupId>
          <artifactId>junit</artifactId>
          <version>3.8.1</version>
+         <optional>true</optional>
       </dependency>
       <dependency>
          <groupId>commons-lang</groupId>
@@ -75,6 +76,24 @@
          <artifactId>commons-logging</artifactId>
          <version>1.1</version>
          <optional>true</optional>
+         <exclusions>
+            <exclusion>
+               <groupId>log4j</groupId>
+               <artifactId>log4j</artifactId>
+            </exclusion>
+            <exclusion>
+               <groupId>logkit</groupId>
+               <artifactId>logkit</artifactId>
+            </exclusion>
+            <exclusion>
+               <groupId>avalon-framework</groupId>
+               <artifactId>avalon-framework</artifactId>
+            </exclusion>
+            <exclusion>
+               <groupId>javax.servlet</groupId>
+               <artifactId>servlet-api</artifactId>
+            </exclusion>
+         </exclusions>
       </dependency>
       <dependency>
          <groupId>log4j</groupId>
