@@ -98,7 +98,11 @@ public final class BeanMorpher implements ObjectMorpher
                sourceType = dynaProperty.getType();
             }else{
                PropertyDescriptor sourcePd = PropertyUtils.getPropertyDescriptor( sourceBean, name );
-               if( sourcePd.getReadMethod() == null ){
+               if( sourcePd == null ){
+                  log.warn( "Property '" + sourceBean.getClass()
+                        .getName() + "." + name + "' does not exist. SKIPPED." );
+                  continue;
+               }else if( sourcePd.getReadMethod() == null ){
                   log.warn( "Property '" + sourceBean.getClass()
                         .getName() + "." + name + "' has no read method. SKIPPED." );
                   continue;

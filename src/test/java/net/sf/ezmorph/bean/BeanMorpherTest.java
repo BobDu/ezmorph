@@ -30,6 +30,7 @@ import net.sf.ezmorph.MorpherRegistry;
 import net.sf.ezmorph.bean.sample.BeanA;
 import net.sf.ezmorph.bean.sample.BeanB;
 import net.sf.ezmorph.bean.sample.BeanC;
+import net.sf.ezmorph.bean.sample.BeanD;
 import net.sf.ezmorph.bean.sample.ObjectBean;
 import net.sf.ezmorph.bean.sample.PrimitiveBean;
 import net.sf.ezmorph.bean.sample.TypedBean;
@@ -415,6 +416,20 @@ public class BeanMorpherTest extends TestCase
       catch( MorphException expected ){
          // ok
       }
+   }
+
+   public void testMorph_BeanA_to_BeanD()
+   {
+      morpherRegistry.registerMorpher( new BeanMorpher( BeanD.class, morpherRegistry ) );
+      BeanA beanA = new BeanA();
+      beanA.setBool( false );
+      beanA.setInteger( 84 );
+      beanA.setString( "string" );
+      BeanD beanD = (BeanD) morpherRegistry.morph( BeanD.class, beanA );
+      assertNotNull( beanD );
+      assertFalse( beanD.isBool() );
+      assertEquals( 84, beanD.getInteger() );
+      assertEquals( 0d, beanD.getDecimal(), 0d );
    }
 
    protected void setUp() throws Exception
