@@ -1,5 +1,5 @@
 /*
- * Copyright 2006 the original author or authors.
+ * Copyright 2006-2007 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ import net.sf.ezmorph.object.IdentityObjectMorpher;
  */
 public class MorpherRegistry implements Serializable
 {
-   private static final long serialVersionUID = -4805239625300200760L;
+   private static final long serialVersionUID = -3894767123320768419L;
    private Map morphers = new HashMap();
 
    public MorpherRegistry()
@@ -54,6 +54,19 @@ public class MorpherRegistry implements Serializable
    public void clear()
    {
       morphers.clear();
+   }
+
+   /**
+    * Deregister all Morphers of a type.<br>
+    *
+    * @param class the target type the Morphers morph to
+    */
+   public void clear( Class type )
+   {
+      List registered = (List) morphers.get( type );
+      if( registered != null ){
+         morphers.remove( type );
+      }
    }
 
    /**
@@ -153,8 +166,23 @@ public class MorpherRegistry implements Serializable
     */
    public void registerMorpher( Morpher morpher )
    {
+      registerMorpher( morpher, false );
+   }
+
+   /**
+    * Register a Morpher for a target <code>Class</code>.<br>
+    * The target class is the class this Morpher morphs to. If there are another
+    * morphers registered to that class, it will be appended to a List.
+    *
+    * @param morpher a Morpher to register. The method <code>morphsTo()</code>
+    *        is used to associate the Morpher to a target Class
+    * @param override if registering teh Morpher should override all previously
+    *        registered morphers for the target type
+    */
+   public void registerMorpher( Morpher morpher, boolean override )
+   {
       List registered = (List) morphers.get( morpher.morphsTo() );
-      if( registered == null ){
+      if( override || registered == null ){
          registered = new ArrayList();
          morphers.put( morpher.morphsTo(), registered );
       }

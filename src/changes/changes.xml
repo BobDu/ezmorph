@@ -8,6 +8,22 @@
    </properties>
    <body>
       <release
+         version="1.0.3"
+         date="2007-08-01"
+         desc="Service release">
+         <action
+            dev="Andres Almiray"
+            type="update">
+            Updated javadocs.
+         </action>
+         <action
+            dev="Andres Almiray"
+            issue="1765637"
+            type="fix">
+            Override registered morphers when registering a new one.
+         </action>
+      </release>
+      <release
          version="1.0.2"
          date="2007-04-14"
          desc="Service release">
