@@ -1,5 +1,5 @@
 /*
- * Copyright 2006 the original author or authors.
+ * Copyright 2006-2007 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import java.util.Locale;
 
 /**
  * Base class por primitive integer conversion.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
 public abstract class AbstractIntegerMorpher extends AbstractPrimitiveMorpher
@@ -30,6 +30,10 @@ public abstract class AbstractIntegerMorpher extends AbstractPrimitiveMorpher
       super();
    }
 
+   /**
+    * @param useDefault if morph() should return a default value if the value to
+    *        be morphed is null
+    */
    public AbstractIntegerMorpher( boolean useDefault )
    {
       super( useDefault );

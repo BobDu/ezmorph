@@ -1,5 +1,5 @@
 /*
- * Copyright 2006 the original author or authors.
+ * Copyright 2006-2007 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import net.sf.ezmorph.ObjectMorpher;
 
 /**
  * Base class for array Morphers.
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
 public abstract class AbstractArrayMorpher implements ObjectMorpher
@@ -33,6 +33,10 @@ public abstract class AbstractArrayMorpher implements ObjectMorpher
    {
    }
 
+   /**
+    * @param useDefault if morph() should return a default value if the value to
+    *        be morphed is null
+    */
    public AbstractArrayMorpher( boolean useDefault )
    {
       this.useDefault = useDefault;

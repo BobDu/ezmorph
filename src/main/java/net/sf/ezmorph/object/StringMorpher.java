@@ -1,5 +1,5 @@
 /*
- * Copyright 2006 the original author or authors.
+ * Copyright 2006-2007 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,8 @@ import net.sf.ezmorph.MorphException;
 import net.sf.ezmorph.ObjectMorpher;
 
 /**
- * Morphs to a String.
+ * Morphs to a String.<br>
+ * This morpher is a singleton.
  *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
@@ -28,6 +29,9 @@ public final class StringMorpher implements ObjectMorpher
 {
    private static final StringMorpher INSTANCE = new StringMorpher();
 
+   /**
+    * Returns the singleton instance
+    */
    public static StringMorpher getInstance()
    {
       return INSTANCE;
@@ -69,13 +73,6 @@ public final class StringMorpher implements ObjectMorpher
       return String.class;
    }
 
-   /**
-    * Returns true if the Morpher supports conversion from this Class.<br>
-    * Supports any type that is not an Array.
-    *
-    * @param clazz the source Class
-    * @return true if clazz is supported by this morpher, false otherwise.
-    */
    public boolean supports( Class clazz )
    {
       return !clazz.isArray();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006 the original author or authors.
+ * Copyright 2006-2007 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,9 @@ public final class DoubleMorpher extends AbstractDecimalMorpher
       super();
    }
 
+   /**
+    * @param defaultValue return value if the value to be morphed is null
+    */
    public DoubleMorpher( double defaultValue )
    {
       super( true );
@@ -66,6 +69,9 @@ public final class DoubleMorpher extends AbstractDecimalMorpher
       }
    }
 
+   /**
+    * Returns the default value for this Morpher.
+    */
    public double getDefaultValue()
    {
       return defaultValue;

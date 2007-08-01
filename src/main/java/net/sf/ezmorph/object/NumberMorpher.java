@@ -1,5 +1,5 @@
 /*
- * Copyright 2006 the original author or authors.
+ * Copyright 2006-2007 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,6 +42,12 @@ public final class NumberMorpher extends AbstractObjectMorpher
    private Number defaultValue;
    private Class type;
 
+   /**
+    * Creates a new morpher for the target type.
+    *
+    * @param type must be a primitive or wrapper type. BigDecimal and BigInteger
+    *        are also supported.
+    */
    public NumberMorpher( Class type )
    {
       super( false );
@@ -62,6 +68,14 @@ public final class NumberMorpher extends AbstractObjectMorpher
       this.type = type;
    }
 
+   /**
+    * Creates a new morpher for the target type with a default value.<br>
+    * The defaultValue should be of the same class as the target type.
+    *
+    * @param type must be a primitive or wrapper type. BigDecimal and BigInteger
+    *        are also supported.
+    * @param defaultValue return value if the value to be morphed is null
+    */
    public NumberMorpher( Class type, Number defaultValue )
    {
       super( true );
@@ -113,6 +127,9 @@ public final class NumberMorpher extends AbstractObjectMorpher
       }
    }
 
+   /**
+    * Returns the default value for this Morpher.
+    */
    public Number getDefaultValue()
    {
       return defaultValue;
@@ -172,6 +189,13 @@ public final class NumberMorpher extends AbstractObjectMorpher
       return type;
    }
 
+   /**
+    * Sets the defaultValue to use if the value to be morphed is null.<br>
+    * The defaultValue should be of the same class as the type this morpher
+    * returns with <code>morphsTo()</code>.
+    *
+    * @param defaultValue return value if the value to be morphed is null
+    */
    public void setDefaultValue( Number defaultValue )
    {
       if( defaultValue != null && !type.isInstance( defaultValue ) ){

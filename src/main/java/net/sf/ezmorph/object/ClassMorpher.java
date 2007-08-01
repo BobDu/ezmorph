@@ -1,5 +1,5 @@
 /*
- * Copyright 2006 the original author or authors.
+ * Copyright 2006-2007 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,8 @@ import net.sf.ezmorph.MorphException;
 import net.sf.ezmorph.ObjectMorpher;
 
 /**
- * Morphs to a Class.
+ * Morphs to a Class.<br>
+ * This morpher is a singleton.
  *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
@@ -28,6 +29,9 @@ public final class ClassMorpher implements ObjectMorpher
 {
    private static final ClassMorpher INSTANCE = new ClassMorpher();
 
+   /**
+    * Returns the singleton instance
+    */
    public static ClassMorpher getInstance()
    {
       return INSTANCE;
@@ -57,7 +61,7 @@ public final class ClassMorpher implements ObjectMorpher
          return (Class) value;
       }
 
-      if( "null".equals( value )){
+      if( "null".equals( value ) ){
          return null;
       }
 

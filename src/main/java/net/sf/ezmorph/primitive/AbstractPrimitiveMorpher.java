@@ -1,5 +1,5 @@
 /*
- * Copyright 2006 the original author or authors.
+ * Copyright 2006-2007 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import net.sf.ezmorph.Morpher;
 
 /**
  * Base class for primitive value conversion.<br>
- * 
+ *
  * @author Andres Almiray <aalmiray@users.sourceforge.net>
  */
 public abstract class AbstractPrimitiveMorpher implements Morpher
@@ -32,13 +32,18 @@ public abstract class AbstractPrimitiveMorpher implements Morpher
 
    }
 
+   /**
+    * @param useDefault if morph() should return a default value if the value to
+    *        be morphed is null
+    */
    public AbstractPrimitiveMorpher( boolean useDefault )
    {
       this.useDefault = useDefault;
    }
 
    /**
-    * Returns if this morpher will use a default value.
+    * Returns if this morpher will use a default value if the value to be
+    * morphed is null
     */
    public boolean isUseDefault()
    {
@@ -48,7 +53,7 @@ public abstract class AbstractPrimitiveMorpher implements Morpher
    /**
     * Returns true if the Morpher supports conversion from this Class.<br>
     * Supports any type that is not an Array.
-    * 
+    *
     * @param clazz the source Class
     * @return true if clazz is supported by this morpher, false otherwise.
     */

@@ -1,5 +1,5 @@
 /*
- * Copyright 2006 the original author or authors.
+ * Copyright 2006-2007 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,14 @@ public final class ObjectArrayMorpher extends AbstractArrayMorpher
    private Class target;
    private Class targetArrayClass;
 
+   /**
+    * Creates a new ArrayMorpher which will use another Morpher for its inner
+    * type.<br>
+    * The inner morpher can not morph to an array. Multiple dimension arrays are
+    * already handled by this class.
+    *
+    * @param morpher the Morpher that will handle the array's inner type.
+    */
    public ObjectArrayMorpher( Morpher morpher )
    {
       super( false );

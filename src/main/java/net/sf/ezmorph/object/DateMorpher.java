@@ -1,5 +1,5 @@
 /*
- * Copyright 2006 the original author or authors.
+ * Copyright 2006-2007 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,21 +42,38 @@ public final class DateMorpher extends AbstractObjectMorpher
    private boolean lenient;
    private Locale locale;
 
+   /**
+    * @param formats a list of formats this morpher supports.
+    */
    public DateMorpher( String[] formats )
    {
       this( formats, Locale.getDefault(), false );
    }
 
+   /**
+    * @param formats a list of formats this morpher supports.
+    * @param lenient if the parsing should be lenient or not.
+    */
    public DateMorpher( String[] formats, boolean lenient )
    {
       this( formats, Locale.getDefault(), lenient );
    }
 
+   /**
+    * @param formats a list of formats this morpher supports.
+    * @param defaultValue return value if the value to be morphed is null.
+    */
    public DateMorpher( String[] formats, Date defaultValue )
    {
       this( formats, defaultValue, Locale.getDefault(), false );
    }
 
+   /**
+    * @param formats a list of formats this morpher supports.
+    * @param defaultValue return value if the value to be morphed is null.
+    * @param locale the Locale used to parse each format.
+    * @param lenient if the parsing should be lenient or not.
+    */
    public DateMorpher( String[] formats, Date defaultValue, Locale locale, boolean lenient )
    {
       super( true );
@@ -76,11 +93,20 @@ public final class DateMorpher extends AbstractObjectMorpher
       setDefaultValue( defaultValue );
    }
 
+   /**
+    * @param formats a list of formats this morpher supports.
+    * @param locale the Locale used to parse each format.
+    */
    public DateMorpher( String[] formats, Locale locale )
    {
       this( formats, locale, false );
    }
 
+   /**
+    * @param formats a list of formats this morpher supports.
+    * @param locale the Locale used to parse each format.
+    * @param lenient if the parsing should be lenient or not.
+    */
    public DateMorpher( String[] formats, Locale locale, boolean lenient )
    {
       if( formats == null || formats.length == 0 ){
@@ -126,6 +152,9 @@ public final class DateMorpher extends AbstractObjectMorpher
       }
    }
 
+   /**
+    * Returns the default value for this Morpher.
+    */
    public Date getDefaultValue()
    {
       return (Date) defaultValue.clone();
@@ -188,6 +217,11 @@ public final class DateMorpher extends AbstractObjectMorpher
       return Date.class;
    }
 
+   /**
+    * Sets the defaultValue to use if the value to be morphed is null.
+    *
+    * @param defaultValue return value if the value to be morphed is null
+    */
    public void setDefaultValue( Date defaultValue )
    {
       this.defaultValue = (Date) defaultValue.clone();

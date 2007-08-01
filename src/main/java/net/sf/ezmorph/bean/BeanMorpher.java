@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2007 the original author or authors.
+ * Copyright 2006-2007-2007 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,11 +50,21 @@ public final class BeanMorpher implements ObjectMorpher
    private boolean lenient;
    private final MorpherRegistry morpherRegistry;
 
+   /**
+    * @param beanClass the target class to morph to
+    * @param morpherRegistry a registry of morphers
+    */
    public BeanMorpher( Class beanClass, MorpherRegistry morpherRegistry )
    {
       this( beanClass, morpherRegistry, false );
    }
 
+   /**
+    * @param beanClass the target class to morph to
+    * @param morpherRegistry a registry of morphers
+    * @param lenient if an exception should be raised if no morpher is found for
+    *        a target property
+    */
    public BeanMorpher( Class beanClass, MorpherRegistry morpherRegistry, boolean lenient )
    {
       validateClass( beanClass );
