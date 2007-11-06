@@ -225,4 +225,60 @@ public class CharArrayAssertionsTest extends TestCase
             { new Character( 'A' ), new Character( 'B' ) } };
       ArrayAssertions.assertEquals( expecteds, actuals );
    }
+
+   public void testAssertEquals_OO_char_char()
+   {
+      Object expecteds = new char[] { 'A', 'B' };
+      Object actuals = new char[] { 'A', 'B' };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_char_Character()
+   {
+      Object expecteds = new char[] { 'A', 'B' };
+      Object actuals = new Character[] { new Character( 'A' ), new Character( 'B' ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_char_double()
+   {
+      boolean errorThrown = false;
+      Object expecteds = new char[] { 'A', 'B' };
+      Object actuals = new double[] { 1, 2 };
+      try{
+         ArrayAssertions.assertEquals( expecteds, actuals );
+      }
+      catch( AssertionFailedError expected ){
+         errorThrown = true;
+      }
+      assertTrue( "Expected a failure", errorThrown );
+   }
+
+   public void testAssertEquals_OO_char_Object_array()
+   {
+      Object expecteds = new char[] { 'A', 'B' };
+      Object actuals = new Object[] { new Character( 'A' ), new Character( 'B' ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Character_char()
+   {
+      Object expecteds = new Character[] { new Character( 'A' ), new Character( 'B' ) };
+      Object actuals = new char[] { 'A', 'B' };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Object_array_char()
+   {
+      Object expecteds = new Object[] { new Character( 'A' ), new Character( 'B' ) };
+      Object actuals = new char[] { 'A', 'B' };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Object_array_Object_array()
+   {
+      Object expecteds = new Object[] { new Character( 'A' ), new Character( 'B' ) };
+      Object actuals = new Object[] { new Character( 'A' ), new Character( 'B' ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
 }

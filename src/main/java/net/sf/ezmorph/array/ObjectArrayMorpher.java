@@ -90,7 +90,7 @@ public final class ObjectArrayMorpher extends AbstractArrayMorpher
             for( int index = 0; index < length; index++ ){
                try{
                   Object value = Array.get( array, index );
-                  if( value != null && !supports( value.getClass() ) ){
+                  if( value != null && !morpher.supports( value.getClass() ) ){
                      throw new MorphException( value.getClass() + " is not supported" );
                   }
                   Object morphed = morphMethod.invoke( morpher, new Object[] { value } );
@@ -122,6 +122,12 @@ public final class ObjectArrayMorpher extends AbstractArrayMorpher
 
    public boolean supports( Class clazz )
    {
+      if( clazz != null && !clazz.isArray() ){
+         return false;
+      }
+      while( clazz.isArray() ){
+         clazz = clazz.getComponentType();
+      }
       return morpher.supports( clazz );
    }
 

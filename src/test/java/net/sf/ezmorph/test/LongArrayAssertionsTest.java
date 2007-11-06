@@ -225,4 +225,60 @@ public class LongArrayAssertionsTest extends TestCase
             { new Long( 1 ), new Long( 2 ) } };
       ArrayAssertions.assertEquals( expecteds, actuals );
    }
+
+   public void testAssertEquals_OO_long_double()
+   {
+      boolean errorThrown = false;
+      Object expecteds = new long[] { 1, 2 };
+      Object actuals = new double[] { 1, 2 };
+      try{
+         ArrayAssertions.assertEquals( expecteds, actuals );
+      }
+      catch( AssertionFailedError expected ){
+         errorThrown = true;
+      }
+      assertTrue( "Expected a failure", errorThrown );
+   }
+
+   public void testAssertEquals_OO_long_long()
+   {
+      Object expecteds = new long[] { 1, 2 };
+      Object actuals = new long[] { 1, 2 };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_long_Long()
+   {
+      Object expecteds = new long[] { 1, 2 };
+      Object actuals = new Long[] { new Long( 1 ), new Long( 2 ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Long_long()
+   {
+      Object expecteds = new Long[] { new Long( 1 ), new Long( 2 ) };
+      Object actuals = new long[] { 1, 2 };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_long_Object_array()
+   {
+      Object expecteds = new long[] { 1, 2 };
+      Object actuals = new Object[] { new Long( 1 ), new Long( 2 ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Object_array_long()
+   {
+      Object expecteds = new Object[] { new Long( 1 ), new Long( 2 ) };
+      Object actuals = new long[] { 1, 2 };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Object_array_Object_array()
+   {
+      Object expecteds = new Object[] { new Long( 1 ), new Long( 2 ) };
+      Object actuals = new Object[] { new Long( 1 ), new Long( 2 ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
 }

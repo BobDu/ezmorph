@@ -225,4 +225,60 @@ public class DoubleArrayAssertionsTest extends TestCase
             { new Double( 1 ), new Double( 2 ) } };
       ArrayAssertions.assertEquals( expecteds, actuals );
    }
+
+   public void testAssertEquals_OO_double_byte()
+   {
+      boolean errorThrown = false;
+      Object expecteds = new double[] { 1, 2 };
+      Object actuals = new byte[] { 1, 2 };
+      try{
+         ArrayAssertions.assertEquals( expecteds, actuals );
+      }
+      catch( AssertionFailedError expected ){
+         errorThrown = true;
+      }
+      assertTrue( "Expected a failure", errorThrown );
+   }
+
+   public void testAssertEquals_OO_double_double()
+   {
+      Object expecteds = new double[] { 1, 2 };
+      Object actuals = new double[] { 1, 2 };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_double_Double()
+   {
+      Object expecteds = new double[] { 1, 2 };
+      Object actuals = new Double[] { new Double( 1 ), new Double( 2 ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Double_double()
+   {
+      Object expecteds = new Double[] { new Double( 1 ), new Double( 2 ) };
+      Object actuals = new double[] { 1, 2 };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_double_Object_array()
+   {
+      Object expecteds = new double[] { 1, 2 };
+      Object actuals = new Object[] { new Double( 1 ), new Double( 2 ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Object_array_double()
+   {
+      Object expecteds = new Object[] { new Double( 1 ), new Double( 2 ) };
+      Object actuals = new double[] { 1, 2 };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Object_array_Object_array()
+   {
+      Object expecteds = new Object[] { new Double( 1 ), new Double( 2 ) };
+      Object actuals = new Object[] { new Double( 1 ), new Double( 2 ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
 }

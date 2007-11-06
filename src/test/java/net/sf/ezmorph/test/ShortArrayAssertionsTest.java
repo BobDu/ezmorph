@@ -78,6 +78,62 @@ public class ShortArrayAssertionsTest extends TestCase
       ArrayAssertions.assertEquals( expecteds, actuals );
    }
 
+   public void testAssertEquals_OO_Object_array_Object_array()
+   {
+      Object expecteds = new Object[] { new Short( (short) 1 ), new Short( (short) 2 ) };
+      Object actuals = new Object[] { new Short( (short) 1 ), new Short( (short) 2 ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Object_array_short()
+   {
+      Object expecteds = new Object[] { new Short( (short) 1 ), new Short( (short) 2 ) };
+      Object actuals = new short[] { 1, 2 };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_short_double()
+   {
+      boolean errorThrown = false;
+      Object expecteds = new short[] { 1, 2 };
+      Object actuals = new double[] { 1, 2 };
+      try{
+         ArrayAssertions.assertEquals( expecteds, actuals );
+      }
+      catch( AssertionFailedError expected ){
+         errorThrown = true;
+      }
+      assertTrue( "Expected a failure", errorThrown );
+   }
+
+   public void testAssertEquals_OO_short_Object_array()
+   {
+      Object expecteds = new short[] { 1, 2 };
+      Object actuals = new Object[] { new Short( (short) 1 ), new Short( (short) 2 ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_short_short()
+   {
+      Object expecteds = new short[] { 1, 2 };
+      Object actuals = new short[] { 1, 2 };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_short_Short()
+   {
+      Object expecteds = new short[] { 1, 2 };
+      Object actuals = new Short[] { new Short( (short) 1 ), new Short( (short) 2 ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Short_short()
+   {
+      Object expecteds = new Short[] { new Short( (short) 1 ), new Short( (short) 2 ) };
+      Object actuals = new short[] { 1, 2 };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
    public void testAssertEquals_short_short()
    {
       short[] expecteds = new short[] { 1, 2 };
@@ -212,7 +268,6 @@ public class ShortArrayAssertionsTest extends TestCase
       }
       assertTrue( "Expected a failure", errorThrown );
    }
-
    public void testAssertEquals_Short_short_expecteds_is_null()
    {
       boolean errorThrown = false;

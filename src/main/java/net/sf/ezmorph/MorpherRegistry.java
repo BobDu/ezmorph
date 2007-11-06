@@ -141,19 +141,43 @@ public class MorpherRegistry implements Serializable
     */
    public Object morph( Class target, Object value )
    {
-      Morpher morpher = getMorpherFor( target );
-      if( morpher instanceof ObjectMorpher ){
-         return ((ObjectMorpher) morpher).morph( value );
-      }else{
-         try{
-            Method morphMethod = morpher.getClass()
-                  .getDeclaredMethod( "morph", new Class[] { Object.class } );
-            return morphMethod.invoke( morpher, new Object[] { value } );
-         }
-         catch( Exception e ){
-            throw new MorphException( e );
+      if( value == null ){
+         // give the first morpher in the list a shot to convert
+         // the value as we can't access type information on it
+         Morpher morpher = getMorpherFor( target );
+         if( morpher instanceof ObjectMorpher ){
+            return ((ObjectMorpher) morpher).morph( value );
+         }else{
+            try{
+               Method morphMethod = morpher.getClass()
+                     .getDeclaredMethod( "morph", new Class[] { Object.class } );
+               return morphMethod.invoke( morpher, new Object[] { value } );
+            }
+            catch( Exception e ){
+               throw new MorphException( e );
+            }
          }
       }
+
+      Morpher[] morphers = getMorphersFor( target );
+      for( int i = 0; i < morphers.length; i++ ){
+         Morpher morpher = morphers[i];
+         if( morpher.supports( value.getClass() ) ){
+            if( morpher instanceof ObjectMorpher ){
+               return ((ObjectMorpher) morpher).morph( value );
+            }else{
+               try{
+                  Method morphMethod = morpher.getClass()
+                        .getDeclaredMethod( "morph", new Class[] { Object.class } );
+                  return morphMethod.invoke( morpher, new Object[] { value } );
+               }
+               catch( Exception e ){
+                  throw new MorphException( e );
+               }
+            }
+         }
+      }
+      return value;
    }
 
    /**

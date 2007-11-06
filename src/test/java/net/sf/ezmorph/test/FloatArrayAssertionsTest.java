@@ -225,4 +225,60 @@ public class FloatArrayAssertionsTest extends TestCase
             { new Float( 1 ), new Float( 2 ) } };
       ArrayAssertions.assertEquals( expecteds, actuals );
    }
+
+   public void testAssertEquals_OO_float_double()
+   {
+      boolean errorThrown = false;
+      Object expecteds = new float[] { 1, 2 };
+      Object actuals = new double[] { 1, 2 };
+      try{
+         ArrayAssertions.assertEquals( expecteds, actuals );
+      }
+      catch( AssertionFailedError expected ){
+         errorThrown = true;
+      }
+      assertTrue( "Expected a failure", errorThrown );
+   }
+
+   public void testAssertEquals_OO_float_float()
+   {
+      Object expecteds = new float[] { 1, 2 };
+      Object actuals = new float[] { 1, 2 };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_float_Float()
+   {
+      Object expecteds = new float[] { 1, 2 };
+      Object actuals = new Float[] { new Float( 1 ), new Float( 2 ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Float_float()
+   {
+      Object expecteds = new Float[] { new Float( 1 ), new Float( 2 ) };
+      Object actuals = new float[] { 1, 2 };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_float_Object_array()
+   {
+      Object expecteds = new float[] { 1, 2 };
+      Object actuals = new Object[] { new Float( 1 ), new Float( 2 ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Object_array_float()
+   {
+      Object expecteds = new Object[] { new Float( 1 ), new Float( 2 ) };
+      Object actuals = new float[] { 1, 2 };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Object_array_Object_array()
+   {
+      Object expecteds = new Object[] { new Float( 1 ), new Float( 2 ) };
+      Object actuals = new Object[] { new Float( 1 ), new Float( 2 ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
 }

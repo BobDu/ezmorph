@@ -225,4 +225,60 @@ public class ByteArrayAssertionsTest extends TestCase
             { new Byte( (byte) 1 ), new Byte( (byte) 2 ) } };
       ArrayAssertions.assertEquals( expecteds, actuals );
    }
+
+   public void testAssertEquals_OO_byte_byte()
+   {
+      Object expecteds = new byte[] { 1, 2 };
+      Object actuals = new byte[] { 1, 2 };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_byte_Byte()
+   {
+      Object expecteds = new byte[] { 1, 2 };
+      Object actuals = new Byte[] { new Byte( (byte) 1 ), new Byte( (byte) 2 ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Byte_byte()
+   {
+      Object expecteds = new Byte[] { new Byte( (byte) 1 ), new Byte( (byte) 2 ) };
+      Object actuals = new byte[] { 1, 2 };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_byte_double()
+   {
+      boolean errorThrown = false;
+      Object expecteds = new byte[] { 1, 2 };
+      Object actuals = new double[] { 1, 2 };
+      try{
+         ArrayAssertions.assertEquals( expecteds, actuals );
+      }
+      catch( AssertionFailedError expected ){
+         errorThrown = true;
+      }
+      assertTrue( "Expected a failure", errorThrown );
+   }
+
+   public void testAssertEquals_OO_byte_Object_array()
+   {
+      Object expecteds = new byte[] { 1, 2 };
+      Object actuals = new Object[] { new Byte( (byte) 1 ), new Byte( (byte) 2 ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Object_array_byte()
+   {
+      Object expecteds = new Object[] { new Byte( (byte) 1 ), new Byte( (byte) 2 ) };
+      Object actuals = new byte[] { 1, 2 };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Object_array_Object_array()
+   {
+      Object expecteds = new Object[] { new Byte( (byte) 1 ), new Byte( (byte) 2 ) };
+      Object actuals = new Object[] { new Byte( (byte) 1 ), new Byte( (byte) 2 ) };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
 }

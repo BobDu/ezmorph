@@ -8,6 +8,17 @@
    </properties>
    <body>
       <release
+         version="1.0.4"
+         date="N/A"
+         desc="Service release">
+         <action
+            dev="Andres Almiray"
+            issue="1826498"
+            type="fix">
+            Wrong morpher is executed.
+         </action>
+      </release>
+      <release
          version="1.0.3"
          date="2007-08-01"
          desc="Service release">

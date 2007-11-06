@@ -38,8 +38,7 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a boolean[] is equal to and Object[] (presumably an
-    * Boolean[])
+    * Asserts that a boolean[] is equal to an Object[] (presumably an Boolean[])
     *
     * @param expecteds
     * @param actuals
@@ -61,7 +60,7 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a byte[] is equal to and Object[] (presumably an Byte[])
+    * Asserts that a byte[] is equal to an Object[] (presumably an Byte[])
     *
     * @param expecteds
     * @param actuals
@@ -83,7 +82,7 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a char[] is equal to and Object[] (presumably an Character[])
+    * Asserts that a char[] is equal to an Object[] (presumably an Character[])
     *
     * @param expecteds
     * @param actuals
@@ -105,7 +104,7 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a double[] is equal to and Object[] (presumably an Double[])
+    * Asserts that a double[] is equal to an Object[] (presumably an Double[])
     *
     * @param expecteds
     * @param actuals
@@ -127,7 +126,7 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a float[] is equal to and Object[] (presumably an Float[])
+    * Asserts that a float[] is equal to an Object[] (presumably an Float[])
     *
     * @param expecteds
     * @param actuals
@@ -149,7 +148,7 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a int[] is equal to and Object[] (presumably an Integer[])
+    * Asserts that a int[] is equal to an Object[] (presumably an Integer[])
     *
     * @param expecteds
     * @param actuals
@@ -171,7 +170,7 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a long[] is equal to and Object[] (presumably an Long[])
+    * Asserts that a long[] is equal to an Object[] (presumably an Long[])
     *
     * @param expecteds
     * @param actuals
@@ -182,7 +181,19 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that Object[] (presumably an Boolean[]) is equal to a boolean[].
+    * Asserts that two objects are equal. If they are not an
+    * AssertionFailedError is thrown.
+    *
+    * @param expecteds
+    * @param actuals
+    */
+   public static void assertEquals( Object expected, Object actual )
+   {
+      assertEquals( null, expected, actual );
+   }
+
+   /**
+    * Asserts that Object[] (presumably an Boolean[]) is equal to an boolean[].
     *
     * @param expecteds
     * @param actuals
@@ -193,7 +204,7 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that Object[] (presumably an Byte[]) is equal to a byte[].
+    * Asserts that Object[] (presumably an Byte[]) is equal to an byte[].
     *
     * @param expecteds
     * @param actuals
@@ -204,7 +215,7 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that Object[] (presumably an Character[]) is equal to a char[].
+    * Asserts that Object[] (presumably an Character[]) is equal to an char[].
     *
     * @param expecteds
     * @param actuals
@@ -215,7 +226,7 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that Object[] (presumably an Double[]) is equal to a double[].
+    * Asserts that Object[] (presumably an Double[]) is equal to an double[].
     *
     * @param expecteds
     * @param actuals
@@ -226,7 +237,7 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that Object[] (presumably an Float[]) is equal to a float[].
+    * Asserts that Object[] (presumably an Float[]) is equal to an float[].
     *
     * @param expecteds
     * @param actuals
@@ -237,7 +248,7 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that Object[] (presumably an Integer[]) is equal to a int[].
+    * Asserts that Object[] (presumably an Integer[]) is equal to an int[].
     *
     * @param expecteds
     * @param actuals
@@ -248,7 +259,7 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that Object[] (presumably an Long[]) is equal to a long[].
+    * Asserts that Object[] (presumably an Long[]) is equal to an long[].
     *
     * @param expecteds
     * @param actuals
@@ -270,7 +281,7 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that Object[] (presumably an Short[]) is equal to a short[].
+    * Asserts that Object[] (presumably an Short[]) is equal to an short[].
     *
     * @param expecteds
     * @param actuals
@@ -281,7 +292,7 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a short[] is equal to and Object[] (presumably an Short[])
+    * Asserts that a short[] is equal to an Object[] (presumably an Short[])
     *
     * @param expecteds
     * @param actuals
@@ -305,6 +316,7 @@ public class ArrayAssertions extends Assert
    /**
     * Asserts that two boolean[] are equal.<br>
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -332,9 +344,9 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a boolean[] is equal to and Object[] (presumably an
-    * Boolean[])
+    * Asserts that a boolean[] is equal to an Object[] (presumably an Boolean[])
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -353,14 +365,15 @@ public class ArrayAssertions extends Assert
       }
 
       for( int i = 0; i < expecteds.length; i++ ){
-         assertEquals( header + "arrays first differed at element [" + i + "];",
-               new Boolean( expecteds[i] ), actuals[i] );
+         assertEquals( header + "arrays first differed at element [" + i + "];", new Boolean(
+               expecteds[i] ), actuals[i] );
       }
    }
 
    /**
     * Asserts that two byte[] are equal.<br>
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -388,8 +401,9 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a byte[] is equal to and Object[] (presumably an Byte[])
+    * Asserts that a byte[] is equal to an Object[] (presumably an Byte[])
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -416,6 +430,7 @@ public class ArrayAssertions extends Assert
    /**
     * Asserts that two char[] are equal.<br>
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -443,8 +458,9 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a char[] is equal to and Object[] (presumably an Character[])
+    * Asserts that a char[] is equal to an Object[] (presumably an Character[])
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -471,6 +487,7 @@ public class ArrayAssertions extends Assert
    /**
     * Asserts that two double[] are equal.<br>
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -498,8 +515,9 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a double[] is equal to and Object[] (presumably an Double[])
+    * Asserts that a double[] is equal to an Object[] (presumably an Double[])
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -526,6 +544,7 @@ public class ArrayAssertions extends Assert
    /**
     * Asserts that two float[] are equal.<br>
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -553,8 +572,9 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a float[] is equal to and Object[] (presumably an Float[])
+    * Asserts that a float[] is equal to an Object[] (presumably an Float[])
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -581,6 +601,7 @@ public class ArrayAssertions extends Assert
    /**
     * Asserts that two int[] are equal.<br>
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -608,8 +629,9 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a int[] is equal to and Object[] (presumably an Integer[])
+    * Asserts that a int[] is equal to an Object[] (presumably an Integer[])
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -636,6 +658,7 @@ public class ArrayAssertions extends Assert
    /**
     * Asserts that two long[] are equal.<br>
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -663,8 +686,9 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a long[] is equal to and Object[] (presumably an Long[])
+    * Asserts that a long[] is equal to an Object[] (presumably an Long[])
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -689,8 +713,42 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that Object[] (presumably an Boolean[]) is equal to a boolean[].
+    * Asserts that two objects are equal. If they are not an
+    * AssertionFailedError is thrown with the given message. *
     *
+    * @param message
+    * @param expecteds
+    * @param actuals
+    */
+   public static void assertEquals( String message, Object expected, Object actual )
+   {
+      if( expected == null && actual == null )
+         return;
+      if( expected != null && expected.equals( actual ) )
+         return;
+      Class expectedClass = expected.getClass();
+      Class actualClass = actual.getClass();
+      if( expectedClass.isArray() && actualClass.isArray() ){
+         Class expectedInnerType = expectedClass.getComponentType();
+         Class actualInnerType = actualClass.getComponentType();
+         if( expectedInnerType.isPrimitive() ){
+            assertExpectedPrimitiveArrays( message, expected, actual, expectedInnerType,
+                  actualInnerType );
+         }else if( actualInnerType.isPrimitive() ){
+            assertActualPrimitiveArrays( message, expected, actual, expectedInnerType,
+                  actualInnerType );
+         }else{
+            assertEquals( message, (Object[]) expected, (Object[]) actual );
+         }
+      }else{
+         failNotEquals( message, expected, actual );
+      }
+   }
+
+   /**
+    * Asserts that Object[] (presumably an Boolean[]) is equal to an boolean[].
+    *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -715,8 +773,9 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that Object[] (presumably an Byte[]) is equal to a byte[].
+    * Asserts that Object[] (presumably an Byte[]) is equal to an byte[].
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -741,8 +800,9 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that Object[] (presumably an Character[]) is equal to a char[].
+    * Asserts that Object[] (presumably an Character[]) is equal to an char[].
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -767,8 +827,9 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that Object[] (presumably an Double[]) is equal to a double[].
+    * Asserts that Object[] (presumably an Double[]) is equal to an double[].
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -793,8 +854,9 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that Object[] (presumably an Float[]) is equal to a float[].
+    * Asserts that Object[] (presumably an Float[]) is equal to an float[].
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -819,8 +881,9 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that Object[] (presumably an Integer[]) is equal to a int[].
+    * Asserts that Object[] (presumably an Integer[]) is equal to an int[].
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -845,8 +908,9 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that Object[] (presumably an Long[]) is equal to a long[].
+    * Asserts that Object[] (presumably an Long[]) is equal to an long[].
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -873,6 +937,7 @@ public class ArrayAssertions extends Assert
    /**
     * Asserts that two Object[] are equal.<br>
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -1023,6 +1088,7 @@ public class ArrayAssertions extends Assert
    /**
     * Asserts that Object[] (presumably an Short[]) is equal to a short[].
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -1047,8 +1113,9 @@ public class ArrayAssertions extends Assert
    }
 
    /**
-    * Asserts that a short[] is equal to and Object[] (presumably an Short[])
+    * Asserts that a short[] is equal to an Object[] (presumably an Short[])
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -1075,6 +1142,7 @@ public class ArrayAssertions extends Assert
    /**
     * Asserts that two short[] are equal.<br>
     *
+    * @param message
     * @param expecteds
     * @param actuals
     */
@@ -1101,7 +1169,148 @@ public class ArrayAssertions extends Assert
       }
    }
 
-   private ArrayAssertions(){
+   private static void assertActualPrimitiveArrays( String message, Object expected, Object actual,
+         Class expectedInnerType, Class actualInnerType )
+   {
+      if( Boolean.TYPE.isAssignableFrom( actualInnerType ) ){
+         if( Boolean.class.isAssignableFrom( expectedInnerType ) ){
+            assertEquals( message, (Boolean[]) expected, (boolean[]) actual );
+         }else{
+            assertEquals( message, (Object[]) expected, (boolean[]) actual );
+         }
+      }else if( Byte.TYPE.isAssignableFrom( actualInnerType ) ){
+         if( Byte.class.isAssignableFrom( expectedInnerType ) ){
+            assertEquals( message, (Byte[]) expected, (byte[]) actual );
+         }else{
+            assertEquals( message, (Object[]) expected, (byte[]) actual );
+         }
+      }else if( Short.TYPE.isAssignableFrom( actualInnerType ) ){
+         if( Short.class.isAssignableFrom( expectedInnerType ) ){
+            assertEquals( message, (Short[]) expected, (short[]) actual );
+         }else{
+            assertEquals( message, (Object[]) expected, (short[]) actual );
+         }
+      }else if( Integer.TYPE.isAssignableFrom( actualInnerType ) ){
+         if( Integer.class.isAssignableFrom( expectedInnerType ) ){
+            assertEquals( message, (Integer[]) expected, (int[]) actual );
+         }else{
+            assertEquals( message, (Object[]) expected, (int[]) actual );
+         }
+      }else if( Long.TYPE.isAssignableFrom( actualInnerType ) ){
+         if( Long.class.isAssignableFrom( expectedInnerType ) ){
+            assertEquals( message, (Long[]) expected, (long[]) actual );
+         }else{
+            assertEquals( message, (Object[]) expected, (long[]) actual );
+         }
+      }else if( Float.TYPE.isAssignableFrom( actualInnerType ) ){
+         if( Float.class.isAssignableFrom( expectedInnerType ) ){
+            assertEquals( message, (Float[]) expected, (float[]) actual );
+         }else{
+            assertEquals( message, (Object[]) expected, (float[]) actual );
+         }
+      }else if( Double.TYPE.isAssignableFrom( actualInnerType ) ){
+         if( Double.class.isAssignableFrom( expectedInnerType ) ){
+            assertEquals( message, (Double[]) expected, (double[]) actual );
+         }else{
+            assertEquals( message, (Object[]) expected, (double[]) actual );
+         }
+      }else if( Character.TYPE.isAssignableFrom( actualInnerType ) ){
+         if( Character.class.isAssignableFrom( expectedInnerType ) ){
+            assertEquals( message, (Character[]) expected, (char[]) actual );
+         }else{
+            assertEquals( message, (Object[]) expected, (char[]) actual );
+         }
+      }
+   }
+
+   private static void assertExpectedPrimitiveArrays( String message, Object expected,
+         Object actual, Class expectedInnerType, Class actualInnerType )
+   {
+      if( Boolean.TYPE.isAssignableFrom( expectedInnerType ) ){
+         if( Boolean.TYPE.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (boolean[]) expected, (boolean[]) actual );
+         }else if( Boolean.class.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (boolean[]) expected, (Boolean[]) actual );
+         }else if( !actualInnerType.isPrimitive() ){
+            assertEquals( message, (boolean[]) expected, (Object[]) actual );
+         }else{
+            failNotEquals( message, expected, actual );
+         }
+      }else if( Byte.TYPE.isAssignableFrom( expectedInnerType ) ){
+         if( Byte.TYPE.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (byte[]) expected, (byte[]) actual );
+         }else if( Byte.class.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (byte[]) expected, (Byte[]) actual );
+         }else if( !actualInnerType.isPrimitive() ){
+            assertEquals( message, (byte[]) expected, (Object[]) actual );
+         }else{
+            failNotEquals( message, expected, actual );
+         }
+      }else if( Short.TYPE.isAssignableFrom( expectedInnerType ) ){
+         if( Short.TYPE.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (short[]) expected, (short[]) actual );
+         }else if( Short.class.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (short[]) expected, (Short[]) actual );
+         }else if( !actualInnerType.isPrimitive() ){
+            assertEquals( message, (short[]) expected, (Object[]) actual );
+         }else{
+            failNotEquals( message, expected, actual );
+         }
+      }else if( Integer.TYPE.isAssignableFrom( expectedInnerType ) ){
+         if( Integer.TYPE.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (int[]) expected, (int[]) actual );
+         }else if( Integer.class.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (int[]) expected, (Integer[]) actual );
+         }else if( !actualInnerType.isPrimitive() ){
+            assertEquals( message, (int[]) expected, (Object[]) actual );
+         }else{
+            failNotEquals( message, expected, actual );
+         }
+      }else if( Long.TYPE.isAssignableFrom( expectedInnerType ) ){
+         if( Long.TYPE.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (long[]) expected, (long[]) actual );
+         }else if( Long.class.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (long[]) expected, (Long[]) actual );
+         }else if( !actualInnerType.isPrimitive() ){
+            assertEquals( message, (long[]) expected, (Object[]) actual );
+         }else{
+            failNotEquals( message, expected, actual );
+         }
+      }else if( Float.TYPE.isAssignableFrom( expectedInnerType ) ){
+         if( Float.TYPE.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (float[]) expected, (float[]) actual );
+         }else if( Float.class.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (float[]) expected, (Float[]) actual );
+         }else if( !actualInnerType.isPrimitive() ){
+            assertEquals( message, (float[]) expected, (Object[]) actual );
+         }else{
+            failNotEquals( message, expected, actual );
+         }
+      }else if( Double.TYPE.isAssignableFrom( expectedInnerType ) ){
+         if( Double.TYPE.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (double[]) expected, (double[]) actual );
+         }else if( Double.class.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (double[]) expected, (Double[]) actual );
+         }else if( !actualInnerType.isPrimitive() ){
+            assertEquals( message, (double[]) expected, (Object[]) actual );
+         }else{
+            failNotEquals( message, expected, actual );
+         }
+      }else if( Character.TYPE.isAssignableFrom( expectedInnerType ) ){
+         if( Character.TYPE.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (char[]) expected, (char[]) actual );
+         }else if( Character.class.isAssignableFrom( actualInnerType ) ){
+            assertEquals( message, (char[]) expected, (Character[]) actual );
+         }else if( !actualInnerType.isPrimitive() ){
+            assertEquals( message, (char[]) expected, (Object[]) actual );
+         }else{
+            failNotEquals( message, expected, actual );
+         }
+      }
+   }
+
+   private ArrayAssertions()
+   {
 
    }
 }

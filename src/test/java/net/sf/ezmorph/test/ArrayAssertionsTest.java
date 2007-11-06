@@ -46,6 +46,12 @@ public class ArrayAssertionsTest extends TestCase
 
    // -----------------------------------------------------------------------
 
+   public void testAssertEquals_null_null()
+   {
+      // assert that original contract is not borken
+      ArrayAssertions.assertEquals( (Object) null, (Object) null );
+   }
+
    public void testAssertEquals_actuals_is_null()
    {
       boolean errorThrown = false;
@@ -88,7 +94,7 @@ public class ArrayAssertionsTest extends TestCase
 
    public void testAssertEquals_multi_Object_Object_nulls()
    {
-      Object[][] expecteds = new Object[][] { { null }, { null} };
+      Object[][] expecteds = new Object[][] { { null }, { null } };
       Object[][] actuals = new Object[][] { { null }, { null } };
       ArrayAssertions.assertEquals( expecteds, actuals );
    }
@@ -106,7 +112,7 @@ public class ArrayAssertionsTest extends TestCase
       }
       assertTrue( "Expected a failure", errorThrown );
    }
-   
+
    public void testAssertEquals_null_elements_2()
    {
       boolean errorThrown = false;
@@ -120,7 +126,7 @@ public class ArrayAssertionsTest extends TestCase
       }
       assertTrue( "Expected a failure", errorThrown );
    }
-   
+
    public void testAssertEquals_Object_Object_nulls()
    {
       Object[] expecteds = new Object[] { null };

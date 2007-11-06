@@ -225,4 +225,60 @@ public class BooleanArrayAssertionsTest extends TestCase
             { Boolean.FALSE, Boolean.TRUE } };
       ArrayAssertions.assertEquals( expecteds, actuals );
    }
+
+   public void testAssertEquals_OO_boolean_boolean()
+   {
+      Object expecteds = new boolean[] { true, false };
+      Object actuals = new boolean[] { true, false };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_boolean_Boolean()
+   {
+      Object expecteds = new boolean[] { true, false };
+      Object actuals = new Boolean[] { Boolean.TRUE, Boolean.FALSE };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Boolean_boolean()
+   {
+      Object expecteds = new Boolean[] { Boolean.TRUE, Boolean.FALSE };
+      Object actuals = new boolean[] { true, false };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_boolean_double()
+   {
+      boolean errorThrown = false;
+      Object expecteds = new boolean[] { true, false };
+      Object actuals = new double[] { 1, 2 };
+      try{
+         ArrayAssertions.assertEquals( expecteds, actuals );
+      }
+      catch( AssertionFailedError expected ){
+         errorThrown = true;
+      }
+      assertTrue( "Expected a failure", errorThrown );
+   }
+
+   public void testAssertEquals_OO_boolean_Object_array()
+   {
+      Object expecteds = new boolean[] { true, false };
+      Object actuals = new Object[] { Boolean.TRUE, Boolean.FALSE };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Object_array_boolean()
+   {
+      Object expecteds = new Object[] { Boolean.TRUE, Boolean.FALSE };
+      Object actuals = new boolean[] { true, false };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
+
+   public void testAssertEquals_OO_Object_array_Object_array()
+   {
+      Object expecteds = new Object[] { Boolean.TRUE, Boolean.FALSE };
+      Object actuals = new Object[] { Boolean.TRUE, Boolean.FALSE };
+      ArrayAssertions.assertEquals( expecteds, actuals );
+   }
 }

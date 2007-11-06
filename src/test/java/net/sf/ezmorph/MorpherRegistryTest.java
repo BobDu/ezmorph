@@ -18,12 +18,19 @@ package net.sf.ezmorph;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+import net.sf.ezmorph.object.AbstractObjectMorpher;
+import net.sf.ezmorph.object.DateMorpher;
 import net.sf.ezmorph.object.IdentityObjectMorpher;
+import net.sf.ezmorph.object.StringMorpher;
 import net.sf.ezmorph.primitive.BooleanMorpher;
 import net.sf.ezmorph.primitive.IntMorpher;
 import net.sf.ezmorph.test.ArrayAssertions;
@@ -50,6 +57,17 @@ public class MorpherRegistryTest extends TestCase
    }
 
    // -----------------------------------------------------------------------
+
+   public void testClear_Class()
+   {
+      MorphUtils.registerStandardMorphers( morpherRegistry );
+      Morpher expected = StringMorpher.getInstance();
+      Morpher actual = morpherRegistry.getMorpherFor( String.class );
+      assertEquals( expected, actual );
+      morpherRegistry.clear( String.class );
+      actual = morpherRegistry.getMorpherFor( String.class );
+      assertFalse( expected.equals( actual ) );
+   }
 
    public void testMorph_array_of_objects()
    {
@@ -240,6 +258,27 @@ public class MorpherRegistryTest extends TestCase
       assertEquals( new Double( 0 ), morpherRegistry.morph( double.class, null ) );
    }
 
+   public void testMorph_severalMorphersForTargetClass()
+   {
+      Map map = new HashMap();
+      map.put( "year", new Integer( 2007 ) );
+      map.put( "month", new Integer( 5 ) );
+      map.put( "day", new Integer( 17 ) );
+      map.put( "hours", new Integer( 12 ) );
+      map.put( "minutes", new Integer( 13 ) );
+      map.put( "seconds", new Integer( 14 ) );
+      map.put( "milliseconds", new Integer( 150 ) );
+
+      MorpherRegistry morpherRegistry = new MorpherRegistry();
+      morpherRegistry.registerMorpher( new DateMorpher( new String[] { "mm/dd/yyyy" } ) );
+      morpherRegistry.registerMorpher( new MapToDateMorpher() );
+      Date date = (Date) morpherRegistry.morph( Date.class, map );
+      assertNotNull( date );
+      Calendar c = Calendar.getInstance();
+      c.setTime( date );
+      assertEquals( 2007, c.get( Calendar.YEAR ) );
+   }
+
    public void testRegistry()
    {
       Morpher morpher = new BooleanMorpher();
@@ -256,6 +295,18 @@ public class MorpherRegistryTest extends TestCase
       Morpher[] morphers = morpherRegistry.getMorphersFor( int.class );
       assertEquals( 1, morphers.length );
       assertSame( IdentityObjectMorpher.getInstance(), morphers[0] );
+   }
+
+   public void testRegistry_standardMorphers()
+   {
+      MorphUtils.registerStandardMorphers( morpherRegistry );
+      Morpher morpher = new IntMorpher( 1 );
+      morpherRegistry.registerMorpher( morpher );
+      Morpher[] morphers = morpherRegistry.getMorphersFor( int.class );
+
+      assertEquals( 2, morphers.length );
+      assertEquals( 0, ((IntMorpher) morphers[0]).getDefaultValue() );
+      assertSame( morpher, morphers[1] );
    }
 
    public void testRegistry_wacky_morpher()
@@ -282,20 +333,49 @@ public class MorpherRegistryTest extends TestCase
       }
    }
 
-   public void testRegistry_standardMorphers()
-   {
-      MorphUtils.registerStandardMorphers( morpherRegistry );
-      Morpher morpher = new IntMorpher( 1 );
-      morpherRegistry.registerMorpher( morpher );
-      Morpher[] morphers = morpherRegistry.getMorphersFor( int.class );
-
-      assertEquals( 2, morphers.length );
-      assertEquals( 0, ((IntMorpher) morphers[0]).getDefaultValue() );
-      assertSame( morpher, morphers[1] );
-   }
-
    protected void setUp() throws Exception
    {
       morpherRegistry = new MorpherRegistry();
+   }
+
+   public static class MapToDateMorpher extends AbstractObjectMorpher
+   {
+      public Object morph( Object value )
+      {
+         if( value == null || !(value instanceof Map) ){
+            return null;
+         }
+         Map map = (Map) value;
+         Calendar c = Calendar.getInstance();
+         c.set( Calendar.YEAR, getValue( map, "year" ) );
+         c.set( Calendar.MONTH, getValue( map, "month" ) );
+         c.set( Calendar.DATE, getValue( map, "day" ) );
+         c.set( Calendar.HOUR_OF_DAY, getValue( map, "hour" ) );
+         c.set( Calendar.MINUTE, getValue( map, "minutes" ) );
+         c.set( Calendar.SECOND, getValue( map, "seconds" ) );
+         c.set( Calendar.MILLISECOND, getValue( map, "milliseconds" ) );
+         return c.getTime();
+      }
+
+      public Class morphsTo()
+      {
+         return Date.class;
+      }
+
+      public boolean supports( Class clazz )
+      {
+         return clazz != null && Map.class.isAssignableFrom( clazz );
+      }
+
+      private int getValue( Map map, String key )
+      {
+         Object value = map.get( key );
+         if( value == null || !(value instanceof Number) ){
+            return 0;
+         }
+
+         Number n = (Number) value;
+         return n.intValue();
+      }
    }
 }
