@@ -13,6 +13,21 @@
          desc="Service release">
          <action
             dev="Andres Almiray"
+            type="update">
+            Added List assertions to ArrayAssetions.
+         </action>
+         <action
+            dev="Andres Almiray"
+            type="update">
+            Added ObjectListMorpher.
+         </action>
+         <action
+            dev="Andres Almiray"
+            type="update">
+            Added MapToDateMorpher.
+         </action>
+         <action
+            dev="Andres Almiray"
             issue="1826498"
             type="fix">
             Wrong morpher is executed.

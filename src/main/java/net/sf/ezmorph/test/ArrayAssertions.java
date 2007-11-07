@@ -16,6 +16,8 @@
 
 package net.sf.ezmorph.test;
 
+import java.util.List;
+
 import junit.framework.Assert;
 
 /**
@@ -154,6 +156,17 @@ public class ArrayAssertions extends Assert
     * @param actuals
     */
    public static void assertEquals( int[] expecteds, Object[] actuals )
+   {
+      assertEquals( null, expecteds, actuals );
+   }
+
+   /**
+    * Asserts that two Lists are equal.<br>
+    *
+    * @param expecteds
+    * @param actuals
+    */
+   public static void assertEquals( List expecteds, List actuals )
    {
       assertEquals( null, expecteds, actuals );
    }
@@ -652,6 +665,64 @@ public class ArrayAssertions extends Assert
       for( int i = 0; i < expecteds.length; i++ ){
          assertEquals( header + "arrays first differed at element [" + i + "];", new Integer(
                expecteds[i] ), actuals[i] );
+      }
+   }
+
+   /**
+    * Asserts that two Lists are equal.<br>
+    *
+    * @param message
+    * @param expecteds
+    * @param actuals
+    */
+   public static void assertEquals( String message, List expecteds, List actuals )
+   {
+      String header = message == null ? "" : message + ": ";
+      if( expecteds == null ){
+         fail( header + "expected list was null" );
+      }
+      if( actuals == null ){
+         fail( header + "actual list was null" );
+      }
+      if( expecteds == actuals || expecteds.equals( actuals ) ){
+         return;
+      }
+      if( actuals.size() != expecteds.size() ){
+         fail( header + "list sizes differed, expected.size()=" + expecteds.size()
+               + " actual.size()=" + actuals.size() );
+      }
+
+      int max = expecteds.size();
+      for( int i = 0; i < max; i++ ){
+         Object o1 = expecteds.get( i );
+         Object o2 = actuals.get( i );
+
+         // handle nulls
+         if( o1 == null ){
+            if( o2 == null ){
+               return;
+            }else{
+               fail( header + "lists first differed at element [" + i + "];" );
+            }
+         }else{
+            if( o2 == null ){
+               fail( header + "lists first differed at element [" + i + "];" );
+            }
+         }
+
+         if( o1.getClass()
+               .isArray() && o2.getClass()
+               .isArray() ){
+            Object[] expected = (Object[]) o1;
+            Object[] actual = (Object[]) o2;
+            assertEquals( header + "lists first differed at element " + i + ";", expected, actual );
+         }else if( List.class.isAssignableFrom( o1.getClass() )
+               && List.class.isAssignableFrom( o2.getClass() ) ){
+            assertEquals( header + "lists first differed at element [" + i + "];", (List) o1,
+                  (List) o2 );
+         }else{
+            assertEquals( header + "lists first differed at element [" + i + "];", o1, o2 );
+         }
       }
    }
 

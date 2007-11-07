@@ -41,7 +41,7 @@ public class ObjectArrayMorpherTest extends TestCase
    public static Test suite()
    {
       TestSuite suite = new TestSuite( ObjectArrayMorpherTest.class );
-      suite.setName( "ObjectArrayMorpher Tests" );
+      suite.setName( "ObjectListMorpher Tests" );
       return suite;
    }
 

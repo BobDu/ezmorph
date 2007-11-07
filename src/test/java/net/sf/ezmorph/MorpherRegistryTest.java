@@ -27,9 +27,9 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-import net.sf.ezmorph.object.AbstractObjectMorpher;
 import net.sf.ezmorph.object.DateMorpher;
 import net.sf.ezmorph.object.IdentityObjectMorpher;
+import net.sf.ezmorph.object.MapToDateMorpher;
 import net.sf.ezmorph.object.StringMorpher;
 import net.sf.ezmorph.primitive.BooleanMorpher;
 import net.sf.ezmorph.primitive.IntMorpher;
@@ -264,7 +264,7 @@ public class MorpherRegistryTest extends TestCase
       map.put( "year", new Integer( 2007 ) );
       map.put( "month", new Integer( 5 ) );
       map.put( "day", new Integer( 17 ) );
-      map.put( "hours", new Integer( 12 ) );
+      map.put( "hour", new Integer( 12 ) );
       map.put( "minutes", new Integer( 13 ) );
       map.put( "seconds", new Integer( 14 ) );
       map.put( "milliseconds", new Integer( 150 ) );
@@ -277,6 +277,12 @@ public class MorpherRegistryTest extends TestCase
       Calendar c = Calendar.getInstance();
       c.setTime( date );
       assertEquals( 2007, c.get( Calendar.YEAR ) );
+      assertEquals( 5, c.get( Calendar.MONTH ) );
+      assertEquals( 17, c.get( Calendar.DATE ) );
+      assertEquals( 12, c.get( Calendar.HOUR_OF_DAY ) );
+      assertEquals( 13, c.get( Calendar.MINUTE ) );
+      assertEquals( 14, c.get( Calendar.SECOND ) );
+      assertEquals( 150, c.get( Calendar.MILLISECOND ) );
    }
 
    public void testRegistry()
@@ -336,46 +342,5 @@ public class MorpherRegistryTest extends TestCase
    protected void setUp() throws Exception
    {
       morpherRegistry = new MorpherRegistry();
-   }
-
-   public static class MapToDateMorpher extends AbstractObjectMorpher
-   {
-      public Object morph( Object value )
-      {
-         if( value == null || !(value instanceof Map) ){
-            return null;
-         }
-         Map map = (Map) value;
-         Calendar c = Calendar.getInstance();
-         c.set( Calendar.YEAR, getValue( map, "year" ) );
-         c.set( Calendar.MONTH, getValue( map, "month" ) );
-         c.set( Calendar.DATE, getValue( map, "day" ) );
-         c.set( Calendar.HOUR_OF_DAY, getValue( map, "hour" ) );
-         c.set( Calendar.MINUTE, getValue( map, "minutes" ) );
-         c.set( Calendar.SECOND, getValue( map, "seconds" ) );
-         c.set( Calendar.MILLISECOND, getValue( map, "milliseconds" ) );
-         return c.getTime();
-      }
-
-      public Class morphsTo()
-      {
-         return Date.class;
-      }
-
-      public boolean supports( Class clazz )
-      {
-         return clazz != null && Map.class.isAssignableFrom( clazz );
-      }
-
-      private int getValue( Map map, String key )
-      {
-         Object value = map.get( key );
-         if( value == null || !(value instanceof Number) ){
-            return 0;
-         }
-
-         Number n = (Number) value;
-         return n.intValue();
-      }
    }
 }
