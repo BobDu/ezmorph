@@ -19,6 +19,11 @@
          <action
             dev="Andres Almiray"
             type="update">
+            Added SwitchingMorpher.
+         </action>
+         <action
+            dev="Andres Almiray"
+            type="update">
             Added ObjectListMorpher.
          </action>
          <action

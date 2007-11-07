@@ -54,6 +54,7 @@ public class ObjectTestSuite extends TestCase
       suite.addTest( ClassMorpherTest.suite() );
       suite.addTest( MapToDateMorpherTest.suite() );
       suite.addTest( ObjectListMorpherTest.suite() );
+      suite.addTest( SwitchingMorpherTest.suite() );
 
       return suite;
    }
