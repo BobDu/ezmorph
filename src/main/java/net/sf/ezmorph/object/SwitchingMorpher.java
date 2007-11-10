@@ -16,8 +16,8 @@
 
 package net.sf.ezmorph.object;
 
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import net.sf.ezmorph.MorphException;
@@ -36,7 +36,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  */
 public class SwitchingMorpher implements ObjectMorpher
 {
-   private Map classMap = new LinkedHashMap();
+   private Map classMap = new HashMap();
    private MorpherRegistry morpherRegistry;
 
    public SwitchingMorpher( Map classMap, MorpherRegistry morpherRegistry )
