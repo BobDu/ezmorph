@@ -207,6 +207,25 @@ public class BeanMorpherTest extends TestCase
       assertEquals( "dyna morph", beanA.getString() );
    }
 
+   public void testMorph_dynaBean_missingProperty() throws Exception
+   {
+      Map properties = new HashMap();
+      properties.put( "integer", Integer.class );
+      properties.put( "bool", Boolean.class );
+      MorphDynaClass dynaClass = new MorphDynaClass( properties );
+      MorphDynaBean dynaBean = (MorphDynaBean) dynaClass.newInstance();
+      dynaBean.setDynaBeanClass( dynaClass );
+      dynaBean.set( "integer", "24" );
+      dynaBean.set( "bool", "false" );
+
+      BeanMorpher morpher = new BeanMorpher( BeanA.class, morpherRegistry );
+      BeanA beanA = (BeanA) morpher.morph( dynaBean );
+      assertNotNull( beanA );
+      assertEquals( false, beanA.isBool() );
+      assertEquals( 24, beanA.getInteger() );
+      assertEquals( "morph", beanA.getString() );
+   }
+   
    public void testMorph_nested__dynaBeans() throws Exception
    {
       Map properties = new HashMap();

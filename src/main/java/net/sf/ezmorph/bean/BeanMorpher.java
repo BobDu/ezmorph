@@ -105,6 +105,10 @@ public final class BeanMorpher implements ObjectMorpher
                DynaBean dynaBean = (DynaBean) sourceBean;
                DynaProperty dynaProperty = dynaBean.getDynaClass()
                      .getDynaProperty( name );
+               if( dynaProperty == null ){
+                  log.warn( "DynaProperty '" + name + "' does not exist. SKIPPED." );
+                  continue;
+               }
                sourceType = dynaProperty.getType();
             }else{
                PropertyDescriptor sourcePd = PropertyUtils.getPropertyDescriptor( sourceBean, name );

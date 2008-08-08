@@ -6,3 +6,4 @@ cobertura.ser
 .settings
 project.properties
 project.xml
+build

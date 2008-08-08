@@ -8,6 +8,17 @@
    </properties>
    <body>
       <release
+         version="1.0.5"
+         date="2008-08-08"
+         desc="Service release">
+         <action
+            dev="Andres Almiray"
+            issue="2043403 "
+            type="fix">
+            NPE when morphing a DynaBean.
+         </action>
+      </release>
+      <release
          version="1.0.4"
          date="2007-11-10"
          desc="Service release">
