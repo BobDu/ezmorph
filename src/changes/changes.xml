@@ -8,6 +8,17 @@
    </properties>
    <body>
       <release
+         version="1.0.6"
+         date="2008-12-08"
+         desc="Service release">
+         <action
+            dev="Andres Almiray"
+            issue="2409100"
+            type="fix">
+            MorpherRegistry not thread safe.
+         </action>
+      </release>   
+      <release
          version="1.0.5"
          date="2008-08-08"
          desc="Service release">

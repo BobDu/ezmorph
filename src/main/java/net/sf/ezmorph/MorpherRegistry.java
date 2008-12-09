@@ -51,7 +51,7 @@ public class MorpherRegistry implements Serializable
    /**
     * Deregisters all morphers.
     */
-   public void clear()
+   public synchronized void clear()
    {
       morphers.clear();
    }
@@ -61,7 +61,7 @@ public class MorpherRegistry implements Serializable
     *
     * @param class the target type the Morphers morph to
     */
-   public void clear( Class type )
+   public synchronized void clear( Class type )
    {
       List registered = (List) morphers.get( type );
       if( registered != null ){
@@ -76,7 +76,7 @@ public class MorpherRegistry implements Serializable
     *
     * @param morpher the target Morpher to remove
     */
-   public void deregisterMorpher( Morpher morpher )
+   public synchronized void deregisterMorpher( Morpher morpher )
    {
       List registered = (List) morphers.get( morpher.morphsTo() );
       if( registered != null && !registered.isEmpty() ){
@@ -94,7 +94,7 @@ public class MorpherRegistry implements Serializable
     *
     * @param clazz the target class for which a Morpher may be associated
     */
-   public Morpher getMorpherFor( Class clazz )
+   public synchronized Morpher getMorpherFor( Class clazz )
    {
       List registered = (List) morphers.get( clazz );
       if( registered == null || registered.isEmpty() ){
@@ -113,7 +113,7 @@ public class MorpherRegistry implements Serializable
     * @param clazz the target class for which a Morpher or Morphers may be
     *        associated
     */
-   public Morpher[] getMorphersFor( Class clazz )
+   public synchronized Morpher[] getMorphersFor( Class clazz )
    {
       List registered = (List) morphers.get( clazz );
       if( registered == null || registered.isEmpty() ){
@@ -203,7 +203,7 @@ public class MorpherRegistry implements Serializable
     * @param override if registering teh Morpher should override all previously
     *        registered morphers for the target type
     */
-   public void registerMorpher( Morpher morpher, boolean override )
+   public synchronized void registerMorpher( Morpher morpher, boolean override )
    {
       List registered = (List) morphers.get( morpher.morphsTo() );
       if( override || registered == null ){
